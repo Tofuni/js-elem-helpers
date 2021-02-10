@@ -9,17 +9,34 @@
 
 			<div class="helper_demo">
 				<p>hide an element (e.g. closing a banner)</p>
-				<p>hide_elem(elem)</p>
+				<p>hideElem(elem)</p>
+				<div class="demo">
+					<div id="banner">this is a sample banner that can be closed
+					   <button id="closeBannerButton" onclick="hideElem('banner')">close</button>
+                    </div>
+				</div>
 			</div>
 
 			<div class="helper_demo">
-				<p>pseudo-href (e.g. apply hyperlink to a <td> element)</p>
+				<p>pseudo-href (e.g. apply hyperlink to a td element)</p>
 				<p>navi(path)</p>
+                <div class="demo">
+					<span id='hrefSpan' onclick="navi('https://github.com')">[this is a span element that links to https://github.com]</span>
+				</div>
 			</div>
 
 			<div class="helper_demo">
 				<p>vertical show/hide toggle via button</p>
 				<p>displayToggleButton(toggleElem, toggleButton)</p>
+                <div class="demo">
+                    <div id="displayToggleButtonWrapper">
+                        <p>click the button to see more details</p>
+                        <div id="toggleDiv">
+                            <p>hello worlds</p>
+                        </div>
+                        <button id="toggleDisplayButton" onclick="displayToggleButton('toggleDiv', 'toggleDisplayButton')">▼</button>
+                    </div>
+				</div>
 			</div>
 
 			<div class="helper_demo">

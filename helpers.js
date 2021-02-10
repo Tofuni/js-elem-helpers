@@ -1,5 +1,5 @@
 // hide an element (e.g. closing a banner)
-var hide_elem = function(elem) {
+var hideElem = function(elem) {
 	document.getElementById(elem).style.display = 'none';
 };
 
@@ -32,3 +32,6 @@ var displayToggleElem = function(toggleElem) {
 		elem.style.display = "none";
 	}
 };
+
+// initialize demos
+document.getElementById('toggleDiv').style.display="none";

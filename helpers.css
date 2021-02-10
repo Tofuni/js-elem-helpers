@@ -2,3 +2,40 @@
 	margin-top: 20px;
 	border-top: 1px solid silver;
 }
+
+.demo {
+    margin: 30px 0px;
+    background-color: rgb(230,230,230);
+}
+
+/* hideElem */
+
+#banner {
+    height: 50px;
+    width: 80%;
+    margin: 0 10%;
+    font-size: 1.5em;
+    padding: 5px;
+    border: 2px solid rgb(50,50,50);
+}
+#closeBannerButton {
+    float: right;
+}
+
+/* navi */
+
+#hrefSpan {
+    cursor: pointer;
+}
+
+/* displayToggleButton */
+
+#displayToggleButtonWrapper {
+    width: 70%;
+    margin: 0 15%;
+    border: 1px solid rgb(100,100,100);
+}
+#toggleDisplayButton {
+    display: block;
+    width: 100%;
+}
