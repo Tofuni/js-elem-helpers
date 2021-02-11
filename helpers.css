@@ -1,3 +1,7 @@
+body {
+    font-family: Tahoma, sans-serif
+}
+
 .helper_demo {
 	margin-top: 20px;
 	border-top: 1px solid silver;
@@ -6,6 +10,14 @@
 .demo {
     margin: 30px 0px;
     background-color: rgb(230,230,230);
+}
+
+.demo_title {
+    font-size: 1.2em;
+    color: rgb(100,100,100);
+}
+.demo_title, .demo_description {
+    margin-left: 10px;
 }
 
 /* hideElem */
@@ -26,13 +38,14 @@
 
 #hrefSpan {
     cursor: pointer;
+    margin-left: 10%;
 }
 
 /* displayToggleButton */
 
 #displayToggleButtonWrapper {
-    width: 70%;
-    margin: 0 15%;
+    width: 80%;
+    margin: 0 10%;
     border: 1px solid rgb(100,100,100);
 }
 #toggleDisplayButton {

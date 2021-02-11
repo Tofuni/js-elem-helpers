@@ -15,10 +15,10 @@ var displayToggleButton = function(toggleElem, toggleButton) {
 	state = elem.style.display;
 	if (state === "none") {
 		elem.style.display = "inline-block";
-		button.innerHTML = "▲";
+		button.innerHTML = "&#9650;";
 	} else {
 		elem.style.display = "none";
-		button.innerHTML = "▼";
+		button.innerHTML = "&#9660;";
 	}
 }
 
