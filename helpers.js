@@ -35,18 +35,3 @@ var countDown = function(time, eventStart, eventEnd, timeDisplayElem) {
         }
 	}, 1000);
 }
-
-// initialize demos
-
-// setup hideElem()
-document.getElementById('toggleDiv').style.display="none";
-
-// setup countDown()
-var cdIniClear = function() {
-    document.getElementById("cdButton").style.display = "none";
-}
-var cdPrintMsg = function() {
-    document.getElementById("cdPrint").innerHTML = "hello worlds";
-    document.getElementById("cdButton").style.display = "none";
-    document.getElementById("cdTimeRem").style.display = "none";
-}
