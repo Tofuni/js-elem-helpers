@@ -22,16 +22,31 @@ var displayToggleButton = function(toggleElem, toggleButton) {
 	}
 }
 
-// display toggle for generic html element
-var displayToggleElem = function(toggleElem) {
-	elem = document.getElementById(toggleElem);
-	state = elem.style.display;
-	if (state === "none") {
-		elem.style.display = "inline-block";
-	} else {
-		elem.style.display = "none";
-	}
-};
+// countdown with start and end events
+var countDown = function(time, eventStart, eventEnd, timeDisplayElem) {
+    eventStart();
+    document.getElementById(timeDisplayElem).innerHTML = time;
+    let cd = setInterval(function() {
+        time -= 1;
+		document.getElementById(timeDisplayElem).innerHTML = time;
+        if (time <= 0) {
+            eventEnd();
+            clearInterval(cd);
+        }
+	}, 1000);
+}
 
 // initialize demos
+
+// setup hideElem()
 document.getElementById('toggleDiv').style.display="none";
+
+// setup countDown()
+var cdIniClear = function() {
+    document.getElementById("cdButton").style.display = "none";
+}
+var cdPrintMsg = function() {
+    document.getElementById("cdPrint").innerHTML = "hello worlds";
+    document.getElementById("cdButton").style.display = "none";
+    document.getElementById("cdTimeRem").style.display = "none";
+}

@@ -30,6 +30,15 @@ let demos = [
                 </div>
                 <button id="toggleDisplayButton" onclick="displayToggleButton('toggleDiv', 'toggleDisplayButton')">&#9660;</button>
             </div>`
+    },
+	{
+		"title": "countDown(time, eventStart, eventEnd, timeDisplayElem)",
+		"description": "countdown with start/end events and time display",
+		"code": `
+            <p>clicking the button will display a message after 5 seconds</p>
+            <span id="cdTimeRem"></span>
+            <p id="cdPrint"></p>
+            <button id="cdButton" onclick="countDown(5, cdIniClear, cdPrintMsg, 'cdTimeRem')">start</button>`
     }
 ];
 
