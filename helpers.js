@@ -35,3 +35,32 @@ var countDown = function(time, eventStart, eventEnd, timeDisplayElem) {
         }
 	}, 1000);
 }
+
+// get random item from array
+var getRandomItem = function(array) {
+    return array[Math.floor(Math.random()*(array.length-1))];
+}
+
+// get values by classname
+var getValuesByClass = function(className) {
+	let elems = document.getElementsByClassName(className);
+	let vals = [];
+	for (a=0; a<elems.length; a+=1) {
+		vals.push(elems[a].value);
+	}
+	return vals;
+}
+
+// append HTML to elemID
+var appendHTMLToElem = function(HTMLString, elemId) {
+	document.getElementById(elemId).insertAdjacentHTML('beforeend', HTMLString);
+}
+
+// remove last elem by class name
+var removeLastElemByClassName = function(className) {
+	let elems = document.getElementsByClassName(className);
+	if (elems.length == 0) {
+		return;
+	}
+	elems[elems.length-1].remove();
+}
