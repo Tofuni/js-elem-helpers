@@ -64,3 +64,9 @@ var removeLastElemByClassName = function(className) {
 	}
 	elems[elems.length-1].remove();
 }
+
+// get difference between now and a date
+var getDateDiff = function(date) {
+	let d = Date.now();
+	return Math.abs(Math.floor((date - d)/(1000*60*60*24)));
+}

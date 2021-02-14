@@ -79,6 +79,14 @@ let demos = [
 			<input class="testInput2"></input><br>
 			<button onclick="removeLastElemByClassName('testInput2')">remove last  element of class "testInput2"</button>
 			`
+	},
+	{
+		"title": "getDateDiff(date)",
+		"description": "get the difference in days between now and a Date object",
+		"code": `
+			<p id="testDateDiff"></p>
+			<button onclick="document.getElementById('testDateDiff').innerHTML = getDateDiff(d)">get the day difference between now and "2100-02-15T12:00:00"<br>(Feb 15, 2100 at 12pm)</button>
+			`
 	}
 ];
 
@@ -93,20 +101,25 @@ demos.forEach(function(demo) {
 });
 document.getElementById("js_helpers").innerHTML = websiteString;
 
-// initialize demos
+// -------------------------------------------------------
+// ------------------ initialize demos -------------------
+// -------------------------------------------------------
 
 // setup hideElem()
 document.getElementById('toggleDiv').style.display="none";
 
 // setup countDown()
-var cdIniClear = function() {
+let cdIniClear = function() {
     document.getElementById("cdButton").style.display = "none";
 }
-var cdPrintMsg = function() {
+let cdPrintMsg = function() {
     document.getElementById("cdPrint").innerHTML = "hello worlds";
     document.getElementById("cdButton").style.display = "none";
     document.getElementById("cdTimeRem").style.display = "none";
 }
 
-// set getRandomItem
-var testArray = [1,2,3,4,12.34,'apple','banana','cherry'];
+// setup getRandomItem
+let testArray = [1,2,3,4,12.34,'apple','banana','cherry'];
+
+// setup getDateDiff
+let d = new Date('2100-02-15T12:00:00');
