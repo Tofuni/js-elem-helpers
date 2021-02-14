@@ -51,3 +51,11 @@ body {
     display: block;
     width: 100%;
 }
+
+/* changeElemColor */
+
+#testChangeElemColor {
+	padding: 5px;
+	border-radius: 10px;
+	width: 50%;
+}

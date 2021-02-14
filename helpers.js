@@ -65,8 +65,15 @@ var removeLastElemByClassName = function(className) {
 	elems[elems.length-1].remove();
 }
 
-// get difference between now and a date
+// get difference between now and a date in days
 var getDateDiff = function(date) {
 	let d = Date.now();
 	return Math.abs(Math.floor((date - d)/(1000*60*60*24)));
+}
+
+// change bg and text-color of element
+var changeElemColor = function(elemId, textColor, bgColor) {
+	let elem = document.getElementById(elemId);
+	elem.style.color = textColor;
+	elem.style.backgroundColor = bgColor;
 }

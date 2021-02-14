@@ -87,6 +87,19 @@ let demos = [
 			<p id="testDateDiff"></p>
 			<button onclick="document.getElementById('testDateDiff').innerHTML = getDateDiff(d)">get the day difference between now and "2100-02-15T12:00:00"<br>(Feb 15, 2100 at 12pm)</button>
 			`
+	},
+	{
+		"title": "changeElemColor(elemId, textColor, bgColor)",
+		"description": "change the text/background color of an element",
+		"code": `
+			<div id="testChangeElemColor">
+				<h3>hello worlds</h3>
+				<p>this is a sample description</p>
+			</div>
+			<br>
+			<input type="checkbox" oninput="if (this.checked) {changeElemColor('testChangeElemColor', 'rgb(230,230,230)', 'rgb(80,80,80)');} else {changeElemColor('testChangeElemColor', 'rgb(80,80,80)', 'rgb(230,230,230)');}"></input>
+			<label> change the element text and background colors</label>
+			`
 	}
 ];
 
