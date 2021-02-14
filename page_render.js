@@ -92,6 +92,16 @@ let demos = [
 			`
 	},
 	{
+        "id": "checkboxToggleEvent",
+		"title": "checkboxToggleEvent(elem, checkEvent, uncheckedEvent, params)",
+		"description": "do events on checkbox toggle/untoggle",
+		"code": `
+			<p id="testCheckboxToggleEvent">checkbox is not checked</p>
+			<input type="checkbox" oninput="checkboxToggleEvent(this, checkboxToggleEventChecked, checkboxToggleEventUnchecked, {})"></input>
+			<label> call functions when the checkbox is checked or unchecked</label>
+			`
+	},
+	{
         "id": "changeElemColor",
 		"title": "changeElemColor(elemId, textColor, bgColor)",
 		"description": "change the text/background color of an element",
@@ -101,7 +111,7 @@ let demos = [
 				<p>this is a sample description</p>
 			</div>
 			<br>
-			<input type="checkbox" oninput="if (this.checked) {changeElemColor('testChangeElemColor', 'rgb(230,230,230)', 'rgb(80,80,80)');} else {changeElemColor('testChangeElemColor', 'rgb(80,80,80)', 'rgb(230,230,230)');}"></input>
+			<input type="checkbox" oninput="checkboxToggleEvent(this, testChangeElemColorChecked, testChangeElemColorUnchecked,  ['rgb(230,230,230)', 'rgb(80,80,80)'])"></input>
 			<label> change the element text and background colors</label>
 			`
 	}
@@ -148,3 +158,19 @@ let testArray = [1,2,3,4,12.34,'apple','banana','cherry'];
 
 // setup getDateDiff
 let d = new Date('2100-02-15T12:00:00');
+
+// changeElemColor
+let testChangeElemColorChecked = function(p) {
+	changeElemColor('testChangeElemColor', p[0], p[1]);
+}
+let testChangeElemColorUnchecked = function(p) {
+	changeElemColor('testChangeElemColor', p[1], p[0]);
+}
+
+// setup checkboxToggleEvent
+let checkboxToggleEventChecked = function() {
+	document.getElementById("testCheckboxToggleEvent").innerText = "checkbox is checked";
+}
+let checkboxToggleEventUnchecked = function() {
+	document.getElementById("testCheckboxToggleEvent").innerText = "checkbox is not checked";
+}

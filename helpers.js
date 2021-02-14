@@ -71,6 +71,12 @@ var getDateDiff = function(date) {
 	return Math.abs(Math.floor((date - d)/(1000*60*60*24)));
 }
 
+// checkbox toggle event
+var checkboxToggleEvent = function(elem, checkEvent, uncheckedEvent, params) {
+	if (elem.checked) { checkEvent(params) }
+	else { uncheckedEvent(params) }
+}
+
 // change bg and text-color of element
 var changeElemColor = function(elemId, textColor, bgColor) {
 	let elem = document.getElementById(elemId);
