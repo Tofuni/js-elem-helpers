@@ -1,11 +1,6 @@
-/*
-"title": "hideElem(elem)", 
-"description": "hide an element (e.g. closing a banner)", 
-"code": ``
-*/
-
 let demos = [
 	{
+		"id": "hideElem",
 		"title": "hideElem(elem)", 
 		"description": "hide an element (e.g. closing a banner)", 
 		"code": `
@@ -14,12 +9,14 @@ let demos = [
 			</div>`
     },
 	{
+		"id": "navi",
 		"title": "navi(path)", 
 		"description": "pseudo-href (apply hyperlink to an element)", 
 		"code": `
             <br><span id='hrefSpan' onclick="navi('https://github.com')">[this is a span element that links to https://github.com]</span><br><br>`
     },
 	{
+		"id": "displayToggleButton",
 		"title": "displayToggleButton(toggleElem, toggleButton)", 
 		"description": "vertical show/hide toggle via button", 
 		"code": `
@@ -32,6 +29,7 @@ let demos = [
             </div>`
     },
 	{
+		"id": "countDown",
 		"title": "countDown(time, eventStart, eventEnd, timeDisplayElem)",
 		"description": "countdown with start/end events and time display",
 		"code": `
@@ -41,6 +39,7 @@ let demos = [
             <button id="cdButton" onclick="countDown(5, cdIniClear, cdPrintMsg, 'cdTimeRem')">start</button>`
     },
     {
+		"id": "getRandomItem",
 		"title": "getRandomItem(array)",
 		"description": "get random item from array",
 		"code": `
@@ -50,6 +49,7 @@ let demos = [
 			`
 	},
 	{
+		"id": "getValuesByClass",
 		"title": "getValuesByClass(className)",
 		"description": "get values by classname",
 		"code": `
@@ -61,6 +61,7 @@ let demos = [
 			<button id="cdButton" onclick="(document.getElementById('testInputVals').innerHTML = getValuesByClass('testInput'))">get values of class 'testInput'</button>`
     },
 	{
+		"id": "appendHTMLToElem",
 		"title": "appendHTMLToElem(htmlString, elementId)",
 		"description": "append HTML string to element",
 		"code": `
@@ -69,6 +70,7 @@ let demos = [
 			`
 	},
 	{
+		"id": "removeLastElemInClassName",
 		"title": "removeLastElemInClassName(className)",
 		"description": "remove last elem by class name",
 		"code": `
@@ -80,7 +82,8 @@ let demos = [
 			<button onclick="removeLastElemByClassName('testInput2')">remove last  element of class "testInput2"</button>
 			`
 	},
-	{
+    {
+        "id": "getDateDiff",
 		"title": "getDateDiff(date)",
 		"description": "get the difference in days between now and a Date object",
 		"code": `
@@ -89,6 +92,7 @@ let demos = [
 			`
 	},
 	{
+        "id": "changeElemColor",
 		"title": "changeElemColor(elemId, textColor, bgColor)",
 		"description": "change the text/background color of an element",
 		"code": `
@@ -103,16 +107,24 @@ let demos = [
 	}
 ];
 
+let sidebarString = "<ul><li><p>JS Helpers</p></li>";
 let websiteString = "";
 demos.forEach(function(demo) {
-    websiteString += 
-        `<div class="helper_demo">
-		  <p class="demo_title">`+demo.title+`</p>
-		  <p class="demo_description">`+demo.description+`</p>
-		  <div class="demo">`+demo.code+`</div>
-	   </div>`;
+	sidebarString += `<li class="sidebarElem" onclick="introfocus('`+demo.id+`')">`+demo.title+`</li>`;
+    websiteString += `<div class="helper_demo">
+			<span id="`+demo.id+`"></span>
+			<p class="demo_title">`+demo.title+`</p>
+			<p class="demo_description">`+demo.description+`</p>
+			<div class="demo">`+demo.code+`</div>
+		</div>`;
 });
+sidebarString += "</ul>"
 document.getElementById("js_helpers").innerHTML = websiteString;
+document.getElementById("sidebar").innerHTML = sidebarString;
+
+function introfocus(elem) {
+    document.getElementById(elem).scrollIntoView();
+}
 
 // -------------------------------------------------------
 // ------------------ initialize demos -------------------
