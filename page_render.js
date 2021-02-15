@@ -88,7 +88,7 @@ let demos = [
 		"description": "get the difference in days between now and a Date object",
 		"code": `
 			<p id="testDateDiff"></p>
-			<button onclick="document.getElementById('testDateDiff').innerHTML = getDateDiff(d)">get the day difference between now and "2100-02-15T12:00:00"<br>(Feb 15, 2100 at 12pm)</button>
+			<button onclick="document.getElementById('testDateDiff').innerHTML = getDateDiff(new Date('2100-02-15T12:00:00'))">get the day difference between now and "2100-02-15T12:00:00"<br>(Feb 15, 2100 at 12pm)</button>
 			`
 	},
 	{
@@ -114,6 +114,31 @@ let demos = [
 			<input type="checkbox" oninput="checkboxToggleEvent(this, testChangeElemColorChecked, testChangeElemColorUnchecked,  ['rgb(230,230,230)', 'rgb(80,80,80)'])"></input>
 			<label> change the element text and background colors</label>
 			`
+	},
+	{
+        "id": "checkUncheckElements",
+		"title": "checkUncheckElements(elements, boolean)",
+		"description": "select or deselect checkable elements",
+		"code": `
+			<input type='checkbox' class='testSelectAll'></input><label>option 1</label><br>
+			<input type='checkbox' class='testSelectAll'></input><label>option 2</label><br>
+			<input type='checkbox' class='testSelectAll'></input><label>option 3</label><br>
+			<input type='checkbox' class='testSelectAll'></input><label>option 4</label><br><br>
+			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), true)'>select all of the above</buttom>
+			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), false)'>unselect all of the above</buttom>`
+	},
+	{
+        "id": "getCheckedElements",
+		"title": "getCheckedElements(elements)",
+		"description": "get all checked elements",
+		"code": `
+			<input type='checkbox' name='option_1' value='option_1' class='testGetCheckedElements'></input><label>option 1</label><br>
+			<input type='checkbox' name='option_2' value='option_2' class='testGetCheckedElements'></input><label>option 2</label><br>
+			<input type='checkbox' name='option_3' value='option_3' class='testGetCheckedElements'></input><label>option 3</label><br>
+			<input type='checkbox' name='option_4' value='option_4' class='testGetCheckedElements'></input><label>option 4</label><br><br>
+			<p id='testGetCheckedElementsOutput'></p>
+			<button onclick='document.getElementById("testGetCheckedElementsOutput").innerHTML = getCheckedElements(document.getElementsByClassName("testGetCheckedElements"))'>get checked elements</button>
+			<p>to view additional element attributes; you can run <br><span class="code_text">console.log( getCheckedElements( document.getElementsByClassName( "testGetCheckedElements" )));</span> in the browser's developer console</p>`
 	}
 ];
 
@@ -155,9 +180,6 @@ let cdPrintMsg = function() {
 
 // setup getRandomItem
 let testArray = [1,2,3,4,12.34,'apple','banana','cherry'];
-
-// setup getDateDiff
-let d = new Date('2100-02-15T12:00:00');
 
 // changeElemColor
 let testChangeElemColorChecked = function(p) {

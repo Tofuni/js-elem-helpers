@@ -83,3 +83,15 @@ var changeElemColor = function(elemId, textColor, bgColor) {
 	elem.style.color = textColor;
 	elem.style.backgroundColor = bgColor;
 }
+
+// check or uncheck all selected elements
+var checkUncheckElements = function(elems, bool) {
+	for (a=0; a<elems.length; a+=1) { elems[a].checked = bool; }
+}
+
+// return all checked elements
+var getCheckedElements = function(elems) {
+	let r = [];
+	for (a=0; a<elems.length; a+=1) { if (elems[a].checked) { r.push(elems[a]); }}
+	return r;
+}
