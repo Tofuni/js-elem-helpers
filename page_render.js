@@ -125,7 +125,7 @@ let demos = [
 			<input type='checkbox' class='testSelectAll'></input><label>option 3</label><br>
 			<input type='checkbox' class='testSelectAll'></input><label>option 4</label><br><br>
 			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), true)'>select all of the above</buttom>
-			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), false)'>unselect all of the above</buttom>`
+			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), false)'>deselect all of the above</buttom>`
 	},
 	{
         "id": "getCheckedElements",
