@@ -95,3 +95,29 @@ var getCheckedElements = function(elems) {
 	for (a=0; a<elems.length; a+=1) { if (elems[a].checked) { r.push(elems[a]); }}
 	return r;
 }
+
+// output alert window to verify action (e.g. alertVerify(event, message))
+var confirmEvent = function(event, message, params) {
+    if (window.confirm(message)) { event(params) };
+}
+
+// reset values back to default values on an HTMLCollection
+var resetToDefault = function(elems, defaults) {
+    for (a=0; a<elems.lenght; a+=1) {
+        elems[a].value = defaults[a];
+    }
+}
+
+// save value of element to localStorage
+var saveToStorage = function(elem, name, value) {
+    window.localStorage.setItem(elem.name, elem.value);
+}
+
+// populate a select element with options
+var addOptions = function(selectElem, optionsList) {
+    let HTMLstring = "";
+    for (option in optionsList) {
+        HTMLstring += "<select name='"+option+"' value='"+optionsList[option]+"'>"+optionsList[option]+"</select>";
+    })
+    selectElem.innerHTML = HTMLstring;
+}
