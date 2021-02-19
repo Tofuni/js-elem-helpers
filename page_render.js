@@ -1,5 +1,17 @@
 let demos = [
 	{
+		"id": "elemSelector",
+		"title": "elemSelector(identifierString)",
+		"description": "select elem(s) using class/id identifier strings (e.g. '#myIdElem', '.myClassElem'); shorthand select for HTMLCollections",
+		"code": `
+            <div id="testElemSelectorId"><span>idElem1</span> - <span>idElem2</span> - <span>idElem3</span></div><br>
+			<span class="testElemSelectorClass">classText1</span> - <span class="testElemSelectorClass">classText2</span>
+			<p id="testElemSelectorResult"></p>
+			<button onclick='elemSelector("#testElemSelectorResult").innerHTML = "<hr>#testElemSelectorId children elems - " + elemSelector("#testElemSelectorId").children + "<br><br>.testElemSelectorClass elems - " + elemSelector(".testElemSelectorClass")'>display elemSelector HTMLCollections</button>
+			<br><p>to view additional element attributes; you can run <br><span class="code_text"> console.log(  elemSelector( '#testElemSelectorId' ).children ); console.log(  elemSelector( '.testElemSelectorClass' ));</span> in the browser's developer console</p>
+			`
+    },
+	{
 		"id": "hideElem",
 		"title": "hideElem(elem)", 
 		"description": "hide an element (e.g. closing a banner)", 
@@ -161,20 +173,12 @@ function introfocus(elem) {
     document.getElementById(elem).scrollIntoView();
 }
 
-// shorthand selector
-var elemSelector = function(elemString) {
-	return {
-		".": document.getElementsByClassName(elemString.slice(1)),
-		"#": document.getElementById(elemString.slice(1)),
-	}[elemString[0]];
-}
-
 // -------------------------------------------------------
 // ------------------ initialize demos -------------------
 // -------------------------------------------------------
 
 // setup hideElem()
-elemSelector('#toggleDiv').style.display="none";
+document.getElementById('toggleDiv').style.display="none";
 
 // setup countDown()
 let cdIniClear = function() {
