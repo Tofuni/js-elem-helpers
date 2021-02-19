@@ -5,7 +5,7 @@ let demos = [
 		"description": "hide an element (e.g. closing a banner)", 
 		"code": `
             <div id="banner">this is a sample banner that can be closed
-                <button id="closeBannerButton" onclick="hideElem('banner')">close</button>
+                <button id="closeBannerButton" onclick="hideElem(elemSelector('#banner'))">close</button>
 			</div>`
     },
 	{
@@ -25,7 +25,7 @@ let demos = [
                 <div id="toggleDiv">
                     <p>hello worlds</p>
                 </div>
-                <button id="toggleDisplayButton" onclick="displayToggleButton('toggleDiv', 'toggleDisplayButton')">&#9660;</button>
+                <button id="toggleDisplayButton" onclick="displayToggleButton(elemSelector('#toggleDiv'), elemSelector('#toggleDisplayButton'))">&#9660;</button>
             </div>`
     },
 	{
@@ -36,7 +36,7 @@ let demos = [
             <p>clicking the button will display a message after several seconds</p>
             <span id="cdTimeRem"></span>
             <p id="cdPrint"></p>
-            <button id="cdButton" onclick="countDown(5, cdIniClear, cdPrintMsg, 'cdTimeRem')">start</button>`
+            <button id="cdButton" onclick="countDown(5, cdIniClear, cdPrintMsg, elemSelector('#cdTimeRem'))">start</button>`
     },
     {
 		"id": "getRandomItem",
@@ -45,41 +45,41 @@ let demos = [
 		"code": `
 			<p>test array: [1,2,3,4,12.34,'apple','banana','cherry']</p>
             <p id='testRandomItem'></p>
-			<button onclick="document.getElementById('testRandomItem').innerHTML=getRandomItem(testArray)">get random item from test array</button>
+			<button onclick="elemSelector('#testRandomItem').innerHTML=getRandomItem(testArray)">get random item from test array</button>
 			`
 	},
 	{
-		"id": "getValuesByClass",
-		"title": "getValuesByClass(className)",
-		"description": "get values by classname",
+		"id": "getValuesInElems",
+		"title": "getValuesInElems(elems)",
+		"description": "get values in elements",
 		"code": `
 			<input class='testInput' type='text'></input>
 			<input class='testInput' type='text'></input>
 			<input class='testInput' type='text'></input>
 			<input class='testInput' type='text'></input>
             <p>values: <span id='testInputVals'></span></p>
-			<button id="cdButton" onclick="(document.getElementById('testInputVals').innerHTML = getValuesByClass('testInput'))">get values of class 'testInput'</button>`
+			<button id="cdButton" onclick="elemSelector('#testInputVals').innerHTML = getValuesInElems(elemSelector('.testInput'))">get values of class 'testInput'</button>`
     },
 	{
 		"id": "appendHTMLToElem",
-		"title": "appendHTMLToElem(htmlString, elementId)",
+		"title": "appendHTMLToElem(htmlString, elem)",
 		"description": "append HTML string to element",
 		"code": `
 			<div id="addHTMLDiv"><p>sample text</div>
-			<button onclick="appendHTMLToElem('<p>more sample text</p>', 'addHTMLDiv')">append HTML</button>
+			<button onclick="appendHTMLToElem('<p>more sample text</p>', elemSelector('#addHTMLDiv'))">append HTML</button>
 			`
 	},
 	{
-		"id": "removeLastElemInClassName",
-		"title": "removeLastElemInClassName(className)",
-		"description": "remove last elem by class name",
+		"id": "removeLastElemInElems",
+		"title": "removeLastElemInElems(elems)",
+		"description": "remove last elem in elements",
 		"code": `
 			<input class="testInput2"></input><br>
 			<input class="testInput2"></input><br>
 			<input class="testInput2"></input><br>
 			<input class="testInput2"></input><br>
 			<input class="testInput2"></input><br>
-			<button onclick="removeLastElemByClassName('testInput2')">remove last  element of class "testInput2"</button>
+			<button onclick="removeLastElemInElems(elemSelector('.testInput2'))">remove last  element of class "testInput2"</button>
 			`
 	},
     {
@@ -88,7 +88,7 @@ let demos = [
 		"description": "get the difference in days between now and a Date object",
 		"code": `
 			<p id="testDateDiff"></p>
-			<button onclick="document.getElementById('testDateDiff').innerHTML = getDateDiff(new Date('2100-02-15T12:00:00'))">get the day difference between now and "2100-02-15T12:00:00"<br>(Feb 15, 2100 at 12pm)</button>
+			<button onclick="elemSelector('#testDateDiff').innerHTML = getDateDiff(new Date('2100-02-15T12:00:00'))">get the day difference between now and "2100-02-15T12:00:00"<br>(Feb 15, 2100 at 12pm)</button>
 			`
 	},
 	{
@@ -103,7 +103,7 @@ let demos = [
 	},
 	{
         "id": "changeElemColor",
-		"title": "changeElemColor(elemId, textColor, bgColor)",
+		"title": "changeElemColor(elem, textColor, bgColor)",
 		"description": "change the text/background color of an element",
 		"code": `
 			<div id="testChangeElemColor">
@@ -116,20 +116,20 @@ let demos = [
 			`
 	},
 	{
-        "id": "checkUncheckElements",
-		"title": "checkUncheckElements(elements, boolean)",
+        "id": "checkUncheckElems",
+		"title": "checkUncheckElems(elems, boolean)",
 		"description": "select or deselect checkable elements",
 		"code": `
 			<input type='checkbox' class='testSelectAll'></input><label>option 1</label><br>
 			<input type='checkbox' class='testSelectAll'></input><label>option 2</label><br>
 			<input type='checkbox' class='testSelectAll'></input><label>option 3</label><br>
 			<input type='checkbox' class='testSelectAll'></input><label>option 4</label><br><br>
-			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), true)'>select all of the above</buttom>
-			<button onclick='checkUncheckElements(document.getElementsByClassName("testSelectAll"), false)'>deselect all of the above</buttom>`
+			<button onclick='checkUncheckElems(elemSelector(".testSelectAll"), true)'>select all of the above</button>
+			<button onclick='checkUncheckElems(elemSelector(".testSelectAll"), false)'>deselect all of the above</button>`
 	},
 	{
-        "id": "getCheckedElements",
-		"title": "getCheckedElements(elements)",
+        "id": "getCheckedElems",
+		"title": "getCheckedElems(elems)",
 		"description": "get all checked elements",
 		"code": `
 			<input type='checkbox' name='option_1' value='option_1' class='testGetCheckedElements'></input><label>option 1</label><br>
@@ -137,8 +137,8 @@ let demos = [
 			<input type='checkbox' name='option_3' value='option_3' class='testGetCheckedElements'></input><label>option 3</label><br>
 			<input type='checkbox' name='option_4' value='option_4' class='testGetCheckedElements'></input><label>option 4</label><br><br>
 			<p id='testGetCheckedElementsOutput'></p>
-			<button onclick='document.getElementById("testGetCheckedElementsOutput").innerHTML = getCheckedElements(document.getElementsByClassName("testGetCheckedElements"))'>get checked elements</button>
-			<p>to view additional element attributes; you can run <br><span class="code_text">console.log( getCheckedElements( document.getElementsByClassName( "testGetCheckedElements" )));</span> in the browser's developer console</p>`
+			<button onclick='elemSelector("#testGetCheckedElementsOutput").innerHTML = getCheckedElems(elemSelector(".testGetCheckedElements"))'>get checked elements</button>
+			<p>to view additional element attributes; you can run <br><span class="code_text">console.log( getCheckedElems( elemSelector( ".testGetCheckedElements" )));</span> in the browser's developer console</p>`
 	}
 ];
 
@@ -161,21 +161,29 @@ function introfocus(elem) {
     document.getElementById(elem).scrollIntoView();
 }
 
+// shorthand selector
+var elemSelector = function(elemString) {
+	return {
+		".": document.getElementsByClassName(elemString.slice(1)),
+		"#": document.getElementById(elemString.slice(1)),
+	}[elemString[0]];
+}
+
 // -------------------------------------------------------
 // ------------------ initialize demos -------------------
 // -------------------------------------------------------
 
 // setup hideElem()
-document.getElementById('toggleDiv').style.display="none";
+elemSelector('#toggleDiv').style.display="none";
 
 // setup countDown()
 let cdIniClear = function() {
-    document.getElementById("cdButton").style.display = "none";
+    elemSelector("#cdButton").style.display = "none";
 }
 let cdPrintMsg = function() {
-    document.getElementById("cdPrint").innerHTML = "hello worlds";
-    document.getElementById("cdButton").style.display = "none";
-    document.getElementById("cdTimeRem").style.display = "none";
+    elemSelector("#cdPrint").innerHTML = "hello worlds";
+    elemSelector("#cdButton").style.display = "none";
+    elemSelector("#cdTimeRem").style.display = "none";
 }
 
 // setup getRandomItem
@@ -183,16 +191,16 @@ let testArray = [1,2,3,4,12.34,'apple','banana','cherry'];
 
 // changeElemColor
 let testChangeElemColorChecked = function(p) {
-	changeElemColor('testChangeElemColor', p[0], p[1]);
+	changeElemColor(elemSelector('#testChangeElemColor'), p[0], p[1]);
 }
 let testChangeElemColorUnchecked = function(p) {
-	changeElemColor('testChangeElemColor', p[1], p[0]);
+	changeElemColor(elemSelector('#testChangeElemColor'), p[1], p[0]);
 }
 
 // setup checkboxToggleEvent
 let checkboxToggleEventChecked = function() {
-	document.getElementById("testCheckboxToggleEvent").innerText = "checkbox is checked";
+	elemSelector("#testCheckboxToggleEvent").innerText = "checkbox is checked";
 }
 let checkboxToggleEventUnchecked = function() {
-	document.getElementById("testCheckboxToggleEvent").innerText = "checkbox is not checked";
+	elemSelector("#testCheckboxToggleEvent").innerText = "checkbox is not checked";
 }
