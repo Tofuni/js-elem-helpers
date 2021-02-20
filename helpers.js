@@ -111,8 +111,8 @@ var resetToDefault = function(elems, defaults) {
     }
 }
 
-// save value of element to localStorage
-var saveToStorage = function(elem, name, value) {
+// save an element name and value to localStorage
+var saveToStorage = function(elem) {
     window.localStorage.setItem(elem.name, elem.value);
 }
 

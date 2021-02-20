@@ -151,6 +151,40 @@ let demos = [
 			<p id='testGetCheckedElementsOutput'></p>
 			<button onclick='elemSelector("#testGetCheckedElementsOutput").innerHTML = getCheckedElems(elemSelector(".testGetCheckedElements"))'>get checked elements</button>
 			<p>to view additional element attributes; you can run <br><span class="code_text">console.log( getCheckedElems( elemSelector( ".testGetCheckedElements" )));</span> in the browser's developer console</p>`
+	},
+	{
+        "id": "confirmEvent",
+		"title": "confirmEvent(event, message, params)",
+		"description": "output alert window to verify action",
+		"code": `
+			<p id='testConfirmEvent'>this is example text</p>
+			<button onclick='confirmEvent(jsTestConfirmEvent, "add more text to the example element?", ["<span>, with more example text</span>", elemSelector("#testConfirmEvent")])'>add additional example text</button>`
+	},
+	{
+        "id": "resetToDefault",
+		"title": "resetToDefault(elems, defaults)",
+		"description": "reset elem values back to default values",
+		"code": `
+			<div id="testResetToDefault">
+				<input type="text" value="default_value_1"></input>
+				<input type="text" value="default_value_2"></input>
+				<input type="time" value="00:00"></input>
+				<input type="range" min="0" max="100" value="50"></input>
+			</div>
+			<button onclick="resetToDefault(elemSelector('#testResetToDefault').children, ['default_value_1', 'default_value_2', '00:00', '50'])">reset values to defaults</button>`
+	},
+	{
+        "id": "saveToStorage",
+		"title": "saveToStorage(elem)",
+		"description": "save an element name and value to localStorage",
+		"code": `
+			<div id="testSaveToStorage">
+				input_field_1 <input name="input_field_1" type="text"></input>
+				input_field_2 <input name="input_field_2" type="text"></input>
+				input_field_3 <input name="input_field_3" type="text"></input>
+			</div>
+			<p id="saveToStorageResult"></p>
+			<button onclick="jsTestSaveToStorage(elemSelector('#testSaveToStorage').children); elemSelector('#saveToStorageResult').innerHTML = 'window.localStorage: ' + JSON.stringify(window.localStorage); elemSelector('#saveToStorageResult').classList.add('code_text')">save input values to storage</button>`
 	}
 ];
 
@@ -207,4 +241,16 @@ let checkboxToggleEventChecked = function() {
 }
 let checkboxToggleEventUnchecked = function() {
 	elemSelector("#testCheckboxToggleEvent").innerText = "checkbox is not checked";
+}
+
+// setup confirmEvent
+let jsTestConfirmEvent = function(params) {
+	appendHTMLToElem(params[0], params[1]);
+}
+
+// setup saveToStorage
+let jsTestSaveToStorage = function(elems) {
+	for (let a=0; a<elems.length; a+=1) {
+		saveToStorage(elems[a]);
+	}
 }
