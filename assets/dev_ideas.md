@@ -1,7 +1,5 @@
 - increase/decrease text size of an element with dropdown select
 
-- increase/decrease text size with range
-
 - increase/decrease element opacity with range
 
 - do an event on \<select\> input dropdown value

@@ -77,9 +77,8 @@ let demos = [
 		"title": "appendHTMLToElem(htmlString, elem)",
 		"description": "append HTML string to element",
 		"code": `
-			<div id="addHTMLDiv"><p>sample text</div>
-			<button onclick="appendHTMLToElem('<p>more sample text</p>', elemSelector('#addHTMLDiv'))">append HTML</button>
-			`
+			<div id="addHTMLDiv">sample text</div>
+			<button onclick="appendHTMLToElem('<p>more sample text</p>', elemSelector('#addHTMLDiv'))">append HTML</button>`
 	},
 	{
 		"id": "removeLastElemInElems",
@@ -155,7 +154,7 @@ let demos = [
 	{
         "id": "confirmEvent",
 		"title": "confirmEvent(event, message, params)",
-		"description": "output alert window to verify action",
+		"description": "output prompt to verify action",
 		"code": `
 			<p id='testConfirmEvent'>this is example text</p>
 			<button onclick='confirmEvent(jsTestConfirmEvent, "add more text to the example element?", ["<span>, with more example text</span>", elemSelector("#testConfirmEvent")])'>add additional example text</button>`
@@ -185,6 +184,28 @@ let demos = [
 			</div>
 			<p id="saveToStorageResult"></p>
 			<button onclick="jsTestSaveToStorage(elemSelector('#testSaveToStorage').children); elemSelector('#saveToStorageResult').innerHTML = 'window.localStorage: ' + JSON.stringify(window.localStorage); elemSelector('#saveToStorageResult').classList.add('code_text')">save input values to storage</button>`
+	},
+	{
+        "id": "addOptions",
+		"title": "addOptions(selectElem, options)",
+		"description": "set options to a select element",
+		"code": `
+			<select id="testAddOptions"></select>
+			<button onclick="addOptions(elemSelector('#testAddOptions'), {'opt1': 'option 1', 'opt2': 'option 2', 'opt3': 'option 3', 'opt4': 'option 4'});">set options to the dropdown element</button>`
+	},
+    {
+        "id": "updateFontSize",
+		"title": "updateFontSize(size, targetElem)",
+		"description": "update text-size based on element value",
+		"code": `
+			<select id="testUpdateFontSize" value="10px" oninput="updateFontSize(elemSelector('#testUpdateFontSize').value, elemSelector('#testUpdateFontSizeText'));">
+                <option value="10px">10px</option>
+                <option value="20px">20px</option>
+                <option value="30px">30px</option>
+				<option value="2em">2em</option>
+				<option value="5em">5em</option>
+            </select>
+            <p id="testUpdateFontSizeText" style="font-size:10px">hello worlds; this is an example element</p>`
 	}
 ];
 

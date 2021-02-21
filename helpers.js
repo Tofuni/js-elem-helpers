@@ -117,10 +117,15 @@ var saveToStorage = function(elem) {
 }
 
 // populate a select element with options
-var addOptions = function(selectElem, optionsList) {
+var addOptions = function(selectElem, options) {
     let HTMLstring = "";
-    for (option in optionsList) {
-        HTMLstring += "<select name='"+option+"' value='"+optionsList[option]+"'>"+optionsList[option]+"</select>";
+    for (option in options) {
+        HTMLstring += "<option name='"+option+"' value='"+options[option]+"'>"+options[option]+"</option>";
     }
     selectElem.innerHTML = HTMLstring;
+}
+
+// update text-size based on element value
+var updateFontSize = function(size, targetElem) {
+	targetElem.style.fontSize = size;
 }
