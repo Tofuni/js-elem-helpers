@@ -129,3 +129,32 @@ var addOptions = function(selectElem, options) {
 var updateFontSize = function(size, targetElem) {
 	targetElem.style.fontSize = size;
 }
+
+// return scroll difference of current element
+var getScrollDiff = function(elem) {
+    return elem.scrollHeight - elem.scrollTop;
+}
+
+// toggle display for multiple items
+var setElemsDisplay = function(elems, display) {
+    for (let a = 0; a<elems.length; a+=1) {
+        elems[a].style.display = display;
+    };
+}
+
+// not null elem value validator
+var validateElemNotNull(elem) {
+    if (elem.value.trim() = "") {
+        errorElem.innerText = errorMsg;
+        return false;
+    }
+    return true;
+}
+
+// number within range validator
+var validateNumWithinRange(num, min, max) {
+    if (num >= min && num <= max) {
+        return true;
+    }
+    return false;
+}
