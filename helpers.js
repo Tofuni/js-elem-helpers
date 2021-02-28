@@ -135,7 +135,7 @@ var getScrollDiff = function(elem) {
     return elem.scrollHeight - elem.scrollTop;
 }
 
-// toggle display for multiple items
+// toggle display for multiple elems
 var setElemsDisplay = function(elems, display) {
     for (let a = 0; a<elems.length; a+=1) {
         elems[a].style.display = display;
@@ -177,5 +177,3 @@ var getMinMax = function(nums, m) {
     };
     return minmax;
 }
-
-// 

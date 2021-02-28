@@ -206,6 +206,38 @@ let demos = [
 				<option value="5em">5em</option>
             </select>
             <p id="testUpdateFontSizeText" style="font-size:10px">hello worlds; this is an example element</p>`
+	},
+	{
+        "id": "getScrollDiff",
+		"title": "getScrollDiff(elem)",
+		"description": "return scroll difference of current element in px",
+		"code": `
+			<p>scroll diff: <span id="testGetScrollDiffOutput">___</span>px</p><br>
+			<div id="testGetScrollDiff" onscroll="elemSelector('#testGetScrollDiffOutput').innerText = getScrollDiff(this)">
+                <p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+				<p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p><p>example text</p>
+            </div>`
+	},
+	{
+        "id": "setElemsDisplay",
+		"title": "setElemsDisplay(elems, display)",
+		"description": "toggle display for multiple elems",
+		"code": `
+			<input type="checkbox" oninput="if (this.checked){setElemsDisplay(elemSelector('#testSetElemsDisplay').children, 'block')}
+			else {setElemsDisplay(elemSelector('#testSetElemsDisplay').children, 'none')}"></input>
+			<label>this checkbox updates the display property for multiple text elements</label>
+			<div id="testSetElemsDisplay">
+				<p>text element 1</p>
+				<p>text element 2</p>
+				<p>text element 3</p>
+				<p>text element 4</p>
+			</div>`
 	}
 ];
 
@@ -274,4 +306,9 @@ let jsTestSaveToStorage = function(elems) {
 	for (let a=0; a<elems.length; a+=1) {
 		saveToStorage(elems[a]);
 	}
+}
+
+// setup setElemsDisplay
+for (let a = 0; a < document.getElementById("testSetElemsDisplay").children.length; a+=1) {
+	document.getElementById("testSetElemsDisplay").children[a].style.display = "none";
 }
