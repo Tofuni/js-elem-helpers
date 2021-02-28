@@ -143,7 +143,7 @@ var setElemsDisplay = function(elems, display) {
 }
 
 // not null elem value validator
-var validateElemNotNull(elem) {
+var validateElemNotNull = function(elem) {
     if (elem.value.trim() = "") {
         errorElem.innerText = errorMsg;
         return false;
@@ -152,9 +152,30 @@ var validateElemNotNull(elem) {
 }
 
 // number within range validator
-var validateNumWithinRange(num, min, max) {
+var validateNumWithinRange = function(num, min, max) {
     if (num >= min && num <= max) {
         return true;
     }
     return false;
 }
+
+// get minimum and maximum value(s) in array of nums
+var getMinMax = function(nums, m) {
+    let minmax = [nums[0], nums[0]];
+    nums.forEach(function(num) {
+        if (num < minmax[0]) {
+            minmax[0] = num;
+        } else if (num > minmax[1]) {
+            minmax[1] = num;
+        }
+    });
+    if (m == 'min' || m == 'max') {
+        return {
+            'min': minmax[0],
+            'max': minmax[1]
+        }[m];
+    };
+    return minmax;
+}
+
+// 
