@@ -238,6 +238,24 @@ let demos = [
 				<p>text element 3</p>
 				<p>text element 4</p>
 			</div>`
+	},
+	{
+        "id": "validateElemNotNull",
+		"title": "validateElemNotNull(elem)",
+		"description": "validate if an element's value is not null (e.g. if a field is filled out)",
+		"code": `
+			<input type="text" onblur="if (validateElemNotNull(this)) { elemSelector('#testValidateElemNotNull').innerText='' } else { elemSelector('#testValidateElemNotNull').innerText='error: this field must have a value' }"></input>
+			<label>this field validates if its value is null when the element is out of focus</label>
+			<p id="testValidateElemNotNull" class="errorText"></p>`
+	},
+	{
+        "id": "validateNumWithinRange",
+		"title": "validateNumWithinRange(num, min, max)",
+		"description": "validate if an element's value within a numeric range",
+		"code": `
+			<input type="number" onblur="if (validateNumWithinRange(this.value, 0, 100)) { elemSelector('#testValidateNumWithinRange').innerText='' } else { elemSelector('#testValidateNumWithinRange').innerText='error: this field does not have a numeric value from 0 to 100' }"></input>
+			<label>this field validates if its value is within the numeric range of 0 to 100</label>
+			<p id="testValidateNumWithinRange" class="errorText"></p>`
 	}
 ];
 

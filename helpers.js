@@ -144,11 +144,10 @@ var setElemsDisplay = function(elems, display) {
 
 // not null elem value validator
 var validateElemNotNull = function(elem) {
-    if (elem.value.trim() = "") {
-        errorElem.innerText = errorMsg;
-        return false;
+    if (elem.value.trim() != "") {
+        return true;
     }
-    return true;
+    return false;
 }
 
 // number within range validator
