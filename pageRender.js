@@ -245,7 +245,7 @@ let demos = [
 		"description": "validate if an element's value is not null (e.g. if a field is filled out)",
 		"code": `
 			<input type="text" onblur="if (validateElemNotNull(this)) { elemSelector('#testValidateElemNotNull').innerText='' } else { elemSelector('#testValidateElemNotNull').innerText='error: this field must have a value' }"></input>
-			<label>this field validates if its value is null when the element is out of focus</label>
+			<label>this field validates if its value is not null when the element is out of focus</label>
 			<p id="testValidateElemNotNull" class="errorText"></p>`
 	},
 	{
