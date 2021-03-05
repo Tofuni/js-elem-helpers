@@ -152,10 +152,7 @@ var validateElemNotNull = function(elem) {
 
 // number within range validator
 var validateNumWithinRange = function(num, min, max) {
-    if (num >= min && num <= max) {
-        return true;
-    }
-    return false;
+    return (num >= min && num <= max);
 }
 
 // get minimum and maximum value(s) in array of nums
@@ -175,4 +172,54 @@ var getMinMax = function(nums, m) {
         }[m];
     };
     return minmax;
+}
+
+// get elements' field_names and values as dictionary payload
+var getElemsNameVals = function(elems) {
+    var r = {};
+    for (let a = 0; a < elems.length; a+=1) {
+        r[elems[a].name] = elems[a].value;
+    }
+    return r;
+}
+
+// parse string and given delimiter to an array object
+var parseStrToArray = function(text, delim) {
+    var list = text.trim().split(",");
+    var r = [];
+    for (let a = 0; a < list.length; a+=1) {
+        r.push(list[a].trim());
+    }
+    return r;
+}
+
+// validate field value with string
+var validateElemStrMatch = function(elem, str) {
+    return (elem.value === str);
+}
+
+// add classes to an element
+var addClassesToElem = function(elem, classes) {
+    classes.forEach(function(c) {
+        elem.classList.add(c);
+    })
+}
+
+// validate character length limit of elem value
+var validateStrLength = function(elem, max) {
+    return (elem.value.length <= max);
+}
+
+// get position of cursor
+var getCursorPosition = function(e) {
+    return [e.clientX, e.clientY];
+}
+
+// return key properties on elem keypress event
+var getKeyProps = function(e) {
+   return {
+       "code": e.code,
+       "key": e.key,
+       "charCode": e.charCode,
+   }
 }
