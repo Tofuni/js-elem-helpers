@@ -185,7 +185,7 @@ var getElemsNameVals = function(elems) {
 
 // parse string and given delimiter to an array object
 var parseStrToArray = function(text, delim) {
-    var list = text.trim().split(",");
+    var list = text.trim().split(delim);
     var r = [];
     for (let a = 0; a < list.length; a+=1) {
         r.push(list[a].trim());

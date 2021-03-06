@@ -256,8 +256,57 @@ let demos = [
 			<input type="number" onblur="if (validateNumWithinRange(this.value, 0, 100)) { elemSelector('#testValidateNumWithinRange').innerText='' } else { elemSelector('#testValidateNumWithinRange').innerText='error: this field does not have a numeric value from 0 to 100' }"></input>
 			<label>this field validates if its value is within the numeric range of 0 to 100</label>
 			<p id="testValidateNumWithinRange" class="errorText"></p>`
+	},
+	{
+		"id": "getMinMax",
+		"title": "getMinMax(nums, 'min|max')",
+		"description": "get minimum and maximum value(s) in array of nums",
+		"code": `
+			<button onclick="genRandomNumArray(); elemSelector('#testGetMinMax').innerText = randomNumArray; elemSelector('#testGetMinMaxRes').innerText = '[ ' + getMinMax(randomNumArray) + ' ]'">generate an array of random numbers and return the min and max of its items</button>
+			<p id="testGetMinMax"></p>
+			<p id="testGetMinMaxRes"></p>`
+	},
+	{
+		"id": "getElemsNameVals",
+		"title": "getElemsNameVals(elems)",
+		"description": "get elements' field_names and values as dictionary payload",
+		"code": `
+			<div id="testGetElemsNameVals">
+				<input name="input_1" placeholder="input field one"></input>
+				<input name="input_2" placeholder="input field two"></input>
+				<input name="input_3" placeholder="input field three"></input>
+				<input name="input_4" placeholder="input field four"></input>
+			</div>
+			<br>
+			<button onclick="elemSelector('#getElemsNameValsRes').innerText = JSON.stringify(getElemsNameVals(elemSelector('#testGetElemsNameVals').children))">get input field payload as {input name: input value}</button>
+			<p id="getElemsNameValsRes"></p>
+		`
+	},
+	{
+		"id": "parseStrToArray",
+		"title": "parseStrToArray(text, delim)",
+		"description": "parse string and given delimiter to an array object",
+		"code": `
+			<textarea id="parseStrToArrayText" rows="8" cols="100"></textarea>
+			<label>delimiter: </label><select id="parseStrToArraySelect">
+				<option value=",">comma (,)</option>
+				<option value=";">semicolon (;)</option>
+				<option value=" ">nbsp (space)</option>
+				<option value="-">dash (-)</option>
+			</select>
+			<br>
+			<button onclick="elemSelector('#parseStrToArrayRes').innerText = parseStrToArray(elemSelector('#parseStrToArrayText').value, elemSelector('#parseStrToArraySelect').value)">parse text input to array with selected delimiter</button>
+			<p id="parseStrToArrayRes"></p>
+			<p>to view the array object itself; you can run <br><span class="code_text"> parseStrToArray( elemSelector('#parseStrToArrayText').value, elemSelector('#parseStrToArraySelect').value )</span> in the browser's developer console</p>`
 	}
 ];
+
+/*
+"id": "",
+"title": "",
+"description": "",
+"code": ``
+*/
 
 let sidebarString = "<ul><li><p>JS Helpers</p></li>";
 let websiteString = "";
@@ -330,3 +379,12 @@ let jsTestSaveToStorage = function(elems) {
 for (let a = 0; a < document.getElementById("testSetElemsDisplay").children.length; a+=1) {
 	document.getElementById("testSetElemsDisplay").children[a].style.display = "none";
 }
+
+// setup getMinMax
+let randomNumArray = [];
+var genRandomNumArray = function() {
+	randomNumArray = [];
+	for (let a=0; a < 10; a+=1) {
+		randomNumArray.push(Math.floor(Math.random()*(100-1)));
+	}
+};

@@ -156,6 +156,23 @@ body {
 	padding: 20px;
 }
 
+/* getElemsNameVals */
+
+#testGetElemsNameVals input {
+	display: block;
+	margin: 15px 0;
+}
+
+/* parseStrToArray */
+
+#parseStrToArrayText {
+	display: block;
+	margin-bottom: 10px;
+}
+#parseStrToArraySelect {
+	margin: 10px 0;
+}
+
 /* generic styles */
 
 .errorText {
