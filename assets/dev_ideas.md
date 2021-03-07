@@ -1,10 +1,4 @@
 [render helper demo]
-- get element properties as a dictionary {field.name: field.value} payload
-
-[render helper demo]
-- parse string and given delimiter to an array object
-
-[render helper demo]
 - validate a string match in element (e.g. a password field)
 
 [render helper demo]

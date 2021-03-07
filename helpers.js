@@ -6,14 +6,28 @@ var elemSelector = function(elemString) {
 	}[elemString[0]];
 }
 
-// hide an element (e.g. closing a banner)
-var hideElem = function(elem) {
-	elem.style.display = 'none';
-};
-
 // pseudo-href (e.g. apply hyperlink to a <td> element)
 var navi = function(path) {
 	location.href = path;
+}
+
+// asynchronously get url and do response function
+var getUrlAsync = function(url, responsetype, func, errorHandler=function(){}) {
+	var req = new XMLHttpRequest();
+	req.responseType = responsetype;
+	req.open("GET", url, true);
+	req.onload = function() {
+		if (req.readyState === req.DONE) { func(req.response); }
+	}
+	req.onerror = function() {
+		errorHandler();
+	};
+	req.send();
+}
+
+// hide an element (e.g. closing a banner)
+var hideElem = function(elem) {
+	elem.style.display = 'none';
 }
 
 // vertical show/hide toggle via button
@@ -44,7 +58,7 @@ var countDown = function(time, eventStart, eventEnd, timeDisplayElem) {
 
 // get random item from array
 var getRandomItem = function(array) {
-    return array[Math.floor(Math.random()*(array.length-1))];
+    return array[Math.floor(Math.random()*(array.length))];
 }
 
 // get values in elements

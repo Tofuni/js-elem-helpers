@@ -173,6 +173,13 @@ body {
 	margin: 10px 0;
 }
 
+/* getUrlAsync */
+
+#testGetUrlAsync, #getUrlAsyncDetails {
+	width: 90%;
+	word-break: break-word;
+}
+
 /* generic styles */
 
 .errorText {

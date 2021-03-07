@@ -8,24 +8,32 @@ let demos = [
 			<span class="testElemSelectorClass">classText1</span> - <span class="testElemSelectorClass">classText2</span>
 			<p id="testElemSelectorResult"></p>
 			<button onclick='elemSelector("#testElemSelectorResult").innerHTML = "<hr>#testElemSelectorId children elems - " + elemSelector("#testElemSelectorId").children + "<br><br>.testElemSelectorClass elems - " + elemSelector(".testElemSelectorClass")'>display elemSelector HTMLCollections</button>
-			<br><p>to view additional element attributes; you can run <br><span class="code_text"> console.log(  elemSelector( '#testElemSelectorId' ).children ); console.log(  elemSelector( '.testElemSelectorClass' ));</span> in the browser's developer console</p>
-			`
+			<br><p>to view additional element attributes; you can run <br><span class="code_text"> console.log(  elemSelector( '#testElemSelectorId' ).children ); console.log(  elemSelector( '.testElemSelectorClass' ));</span> in the browser's developer console</p>`
     },
 	{
-		"id": "hideElem",
-		"title": "hideElem(elem)", 
-		"description": "hide an element (e.g. closing a banner)", 
+		"id": "getUrlAsync",
+		"title": "getUrlAsync(url, responsetype, func, errorHandler[optional-arg])",
+		"description": "asynchronously get url and do response function",
 		"code": `
-            <div id="banner">this is a sample banner that can be closed
-                <button id="closeBannerButton" onclick="hideElem(elemSelector('#banner'))">close</button>
-			</div>`
-    },
+			<button onclick=" getUrlAsync('https://fbacarisas.xyz/data/programming/example.json', 'json', function(res){elemSelector('#testGetUrlAsync').innerText = JSON.stringify(res); }, testGetUrlAsyncErrorHandler);">this button displays an http GET response from (https://fbacarisas.xyz/data/programming/example.json)</button>
+			<p id="testGetUrlAsync"></p>
+			<br><p id="getUrlAsyncDetails">to view an example JSON response; you can run <br><span class="code_text"> getUrlAsync( "https://fbacarisas.xyz/data/programming/example.json", "json", function(res){ console.log(res) });</span> in the browser's developer console while on <a href='https://fbacarisas.xyz/programming/code_demos/js_helpers/'>fbacarisas.xyz/programming/code_demos/js_helpers/</a>; note: this works on the fbacarisas.xyz domain because of <a target="_blank" href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS policy</a> for content from the website<br><br>to view an example HTML response, you can run the following in the developer console: <br><span class="code_text">getUrlAsync("https://fbacarisas.xyz", "text", function(res) {console.log(res)});</span></p>`
+	},
 	{
 		"id": "navi",
 		"title": "navi(path)", 
 		"description": "pseudo-href (apply hyperlink to an element)", 
 		"code": `
             <br><span id='hrefSpan' onclick="navi('https://github.com')">[this is a span element that links to https://github.com]</span><br><br>`
+    },
+	{
+		"id": "hideElem",
+		"title": "hideElem(elem)",
+		"description": "hide an element (e.g. closing a banner)",
+		"code": `
+            <div id="banner">this is a sample banner that can be closed
+                <button id="closeBannerButton" onclick="hideElem(elemSelector('#banner'))">close</button>
+			</div>`
     },
 	{
 		"id": "displayToggleButton",
@@ -287,7 +295,7 @@ let demos = [
 		"title": "parseStrToArray(text, delim)",
 		"description": "parse string and given delimiter to an array object",
 		"code": `
-			<textarea id="parseStrToArrayText" rows="8" cols="100"></textarea>
+			<textarea id="parseStrToArrayText" rows="8" cols="50"></textarea>
 			<label>delimiter: </label><select id="parseStrToArraySelect">
 				<option value=",">comma (,)</option>
 				<option value=";">semicolon (;)</option>
@@ -388,3 +396,8 @@ var genRandomNumArray = function() {
 		randomNumArray.push(Math.floor(Math.random()*(100-1)));
 	}
 };
+
+// setup testGetUrlAsyncErrorHandler
+var testGetUrlAsyncErrorHandler = function() {
+	window.alert('error on callback; please ensure this function is run in [ https://fbacarisas.xyz/programming/code_demos/js_helpers/ ] to pass CORS policy;');
+}
