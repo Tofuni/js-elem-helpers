@@ -212,11 +212,13 @@ var validateElemStrMatch = function(elem, str) {
     return (elem.value === str);
 }
 
-// add classes to an element
-var addClassesToElem = function(elem, classes) {
-    classes.forEach(function(c) {
-        elem.classList.add(c);
-    })
+// add/remove classes for an element
+var addRemoveClassesToElem = function(elem, classes, addRem) {
+    if (addRem.toLowerCase() === "add") {
+		classes.forEach(function(c) { elem.classList.add(c); });
+	} else if (addRem.toLowerCase() === "remove") {
+		classes.forEach(function(c) { elem.classList.remove(c); });
+	} else { return }
 }
 
 // validate character length limit of elem value

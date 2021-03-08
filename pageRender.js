@@ -287,8 +287,7 @@ let demos = [
 			</div>
 			<br>
 			<button onclick="elemSelector('#getElemsNameValsRes').innerText = JSON.stringify(getElemsNameVals(elemSelector('#testGetElemsNameVals').children))">get input field payload as {input name: input value}</button>
-			<p id="getElemsNameValsRes"></p>
-		`
+			<p id="getElemsNameValsRes"></p>`
 	},
 	{
 		"id": "parseStrToArray",
@@ -306,7 +305,28 @@ let demos = [
 			<button onclick="elemSelector('#parseStrToArrayRes').innerText = parseStrToArray(elemSelector('#parseStrToArrayText').value, elemSelector('#parseStrToArraySelect').value)">parse text input to array with selected delimiter</button>
 			<p id="parseStrToArrayRes"></p>
 			<p>to view the array object itself; you can run <br><span class="code_text"> parseStrToArray( elemSelector('#parseStrToArrayText').value, elemSelector('#parseStrToArraySelect').value )</span> in the browser's developer console</p>`
-	}
+	},
+	{
+        "id": "validateElemStrMatch",
+		"title": "validateElemStrMatch(elem, str)",
+		"description": "validate if an element's value matches a string",
+		"code": `
+			<p>what is a tetravalent organic element essential to organic chemistry? (answer is in lowercase)</p>
+			<input type="text" id="testValidateElemStrMatch"></input>
+			<button onclick="if (validateElemStrMatch(elemSelector('#testValidateElemStrMatch'), [enc[54],enc[97],enc[61]].join(''))) { elemSelector('#testValidateNumWithinRangeRes').innerText = 'nice! the answer is correct' } else { elemSelector('#testValidateNumWithinRangeRes').innerText = 'error: please try again (hint the element has an atomic number of 6)' }">check answer</button>
+			<label>this button validates if the input field's value matches the answer</label>
+			<p id="testValidateNumWithinRangeRes"></p>`
+	},
+	{
+        "id": "addRemoveClassesToElem",
+		"title": "addRemoveClassesToElem(elem, classes, 'add|remove')",
+		"description": "add/remove classes for an element",
+		"code": `
+			<input type="checkbox" oninput="if (this.checked) {addRemoveClassesToElem(elemSelector('#testAddRemoveClassesToElem'), ['pink','rgb50','fontSize15','width50','padding2'], 'add')} else {addRemoveClassesToElem(elemSelector('#testAddRemoveClassesToElem'), ['fontSize15', 'padding2'], 'remove')}"></input>
+			<label>checking this checkbox will add the CSS classes ['pink', 'rgb50', 'fontSize15', 'width50', 'padding2'] to the example text
+			<br>unchecking the box will remove classes ['fontSize15', 'padding2']</label>
+			<p id="testAddRemoveClassesToElem">hello worlds, this is some example text</p>`
+	},
 ];
 
 /*
@@ -315,6 +335,10 @@ let demos = [
 "description": "",
 "code": ``
 */
+
+// -------------------------------------------------------
+// ------------------ initialize elems -------------------
+// -------------------------------------------------------
 
 let sidebarString = "<ul><li><p>JS Helpers</p></li>";
 let websiteString = "";
@@ -401,3 +425,6 @@ var genRandomNumArray = function() {
 var testGetUrlAsyncErrorHandler = function() {
 	window.alert('error on callback; please ensure this function is run in [ https://fbacarisas.xyz/programming/code_demos/js_helpers/ ] to pass CORS policy;');
 }
+
+// setup testValidateElemStrMatch
+var enc = {2:"qs",61:"on",38:"na",23:"sp",54:"ca",18:"zi",76:"tq",97:"rb",72:"va",21:"zx"};

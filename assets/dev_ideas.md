@@ -1,10 +1,4 @@
 [render helper demo]
-- validate a string match in element (e.g. a password field)
-
-[render helper demo]
-- add class(es) to an element
-
-[render helper demo]
 - validate character length limit (e.g. max 15 characters in input field)
 
 [render helper demo]
