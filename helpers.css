@@ -180,10 +180,26 @@ body {
 	word-break: break-word;
 }
 
+/* */
+
+#testGetCursorPositionElem {
+	width: 50%;
+	height: 400px;
+	border: 2px solid rgb(50,50,50);
+}
+
 /* generic styles */
 
 .errorText {
 	color: red;
+}
+.emphasis {
+	display: inline-block;
+	font-size: 1.2em;
+	padding: 5px;
+	background-color: rgb(50,50,50);
+	color: white;
+	border-radius: 5px;
 }
 .pink {
 	color: pink;

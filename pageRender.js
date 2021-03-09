@@ -327,6 +327,24 @@ let demos = [
 			<br>unchecking the box will remove classes ['fontSize15', 'padding2']</label>
 			<p id="testAddRemoveClassesToElem">hello worlds, this is some example text</p>`
 	},
+	{
+		"id": "validateStrLength",
+		"title": "validateStrLength(elem, max)",
+		"description": "validate character length limit of elem value",
+		"code": `
+			<input type="text" onblur="if (validateStrLength(this, 15)) { elemSelector('#testValidateStrLength').innerText='' } else { elemSelector('#testValidateStrLength').innerText='error: this field can have up to 15 characters' }"></input>
+			<label>this field validates if its value has a length of up to 15 characters</label>
+			<p id="testValidateStrLength" class="errorText"></p>`
+	},
+	{
+		"id": "getCursorPosition",
+		"title": "getCursorPosition(event)",
+		"description": "get position of cursor as [x-coord, y-coord]",
+		"code": `
+			<p>hover the mouse over the box to get the position of the mouse cursor as [ x-coord,y-coord ]</p>
+			<p class="emphasis">position = [ <span id="testGetCursorPosition"></span> ]</p>
+			<div id="testGetCursorPositionElem" onmousemove="elemSelector('#testGetCursorPosition').innerText = getCursorPosition(event)"></div>`
+	}
 ];
 
 /*

@@ -226,7 +226,7 @@ var validateStrLength = function(elem, max) {
     return (elem.value.length <= max);
 }
 
-// get position of cursor
+// get position of cursor as [x-coord, y-coord]
 var getCursorPosition = function(e) {
     return [e.clientX, e.clientY];
 }
@@ -239,3 +239,12 @@ var getKeyProps = function(e) {
        "charCode": e.charCode,
    }
 }
+
+// generate a random array of numbers from a set range
+var genRandomNumArray = function(numItems, min, max) {
+	var r = [];
+	for (let a=0; a < numItems; a+=1) {
+		r.push(Math.floor(Math.random()*(max-min+1)+min));
+	}
+    return randomNumArray
+};
