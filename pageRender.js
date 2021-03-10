@@ -344,6 +344,15 @@ let demos = [
 			<p>hover the mouse over the box to get the position of the mouse cursor as [ x-coord,y-coord ]</p>
 			<p class="emphasis">position = [ <span id="testGetCursorPosition"></span> ]</p>
 			<div id="testGetCursorPositionElem" onmousemove="elemSelector('#testGetCursorPosition').innerText = getCursorPosition(event)"></div>`
+	},
+	{
+		"id": "getKeyProps",
+		"title": "getKeyProps(event)",
+		"description": "return key properties on elem keypress event",
+		"code": `
+			<p>the keyevent properties will display when the input is entered into the field</p>
+			<p id="testGetKeyProps" class="fontSize15"></p>
+			<textarea id="testGetKeyPropsDiv" rows=5 cols=40 onkeypress="elemSelector('#testGetKeyProps').innerText = JSON.stringify(getKeyProps(event));"></textarea>`
 	}
 ];
 

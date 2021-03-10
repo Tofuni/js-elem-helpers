@@ -233,10 +233,10 @@ var getCursorPosition = function(e) {
 
 // return key properties on elem keypress event
 var getKeyProps = function(e) {
-   return {
-       "code": e.code,
-       "key": e.key,
-       "charCode": e.charCode,
+	return {
+		"code": e.code,
+		"key": e.key,
+		"charCode": e.charCode,
    }
 }
 
