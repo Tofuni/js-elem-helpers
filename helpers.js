@@ -240,6 +240,13 @@ var getKeyProps = function(e) {
    }
 }
 
+// do function on key
+var doFunctionOnKey = function(e, inputKey, func, params={}) {
+	if (e.key === inputKey) {
+        return func(params);
+    }
+}
+
 // generate a random array of numbers from a set range
 var genRandomNumArray = function(numItems, min, max) {
 	var r = [];

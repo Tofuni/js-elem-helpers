@@ -353,6 +353,14 @@ let demos = [
 			<p>the keyevent properties will display when the input is entered into the field</p>
 			<p id="testGetKeyProps" class="fontSize15"></p>
 			<textarea id="testGetKeyPropsDiv" rows=5 cols=40 onkeypress="elemSelector('#testGetKeyProps').innerText = JSON.stringify(getKeyProps(event));"></textarea>`
+	},
+	{
+		"id": "doFunctionOnKey",
+		"title": "doFunctionOnKey(event, inputKey, function, params={})",
+		"description": "do function on a given key press",
+		"code": `
+			<p>while using the textbox as input, pressing the 'y' key will set the box to yellow; pressing the 'p' key will set the box to pink; pressing the 'g' key will set the box to green; pressing the 'r' key will reset the box</p>
+			<textarea id="testDoFunctionOnKeyDiv" rows=5 cols=40 onkeypress="doFunctionOnKey(event, 'y', testDoFunction, 'yellow'); doFunctionOnKey(event, 'p', testDoFunction, 'pink'); doFunctionOnKey(event, 'g', testDoFunction, 'green'); doFunctionOnKey(event, 'r', testDoFunction, 'rgb(255, 255, 255)')"></textarea>`
 	}
 ];
 
@@ -455,3 +463,8 @@ var testGetUrlAsyncErrorHandler = function() {
 
 // setup testValidateElemStrMatch
 var enc = {2:"qs",61:"on",38:"na",23:"sp",54:"ca",18:"zi",76:"tq",97:"rb",72:"va",21:"zx"};
+
+// setup doFunctionOnKey
+var testDoFunction = function(params) {
+	document.getElementById("testDoFunctionOnKeyDiv").style.backgroundColor = params;
+}
