@@ -361,6 +361,22 @@ let demos = [
 		"code": `
 			<p>while using the textbox as input, pressing the 'y' key will set the box to yellow; pressing the 'p' key will set the box to pink; pressing the 'g' key will set the box to green; pressing the 'r' key will reset the box</p>
 			<textarea id="testDoFunctionOnKeyDiv" rows=5 cols=40 onkeypress="doFunctionOnKey(event, 'y', testDoFunction, 'yellow'); doFunctionOnKey(event, 'p', testDoFunction, 'pink'); doFunctionOnKey(event, 'g', testDoFunction, 'green'); doFunctionOnKey(event, 'r', testDoFunction, 'rgb(255, 255, 255)')"></textarea>`
+	},
+	{
+		"id": "genRandomNumArray",
+		"title": "genRandomNumArray(numItems, min, max)",
+		"description": "generate a random array of numbers from a set range",
+		"code": `
+			<select id="testGenRandomNumArraySelect" oninput="elemSelector('#testGenRandomNumArrayButton').innerText = 'generate '+this.value+' random numbers'" value=3>
+				<option value="3">3 items</option>
+				<option value="5">5 items</option>
+				<option value="10">10 items</option>
+				<option value="20">20 items</option>
+				<option value="50">50 items</option>
+			</select>
+			<p class="fontSize15" id="testGenRandomNumArray"></p>
+			<button onclick="elemSelector('#testGenRandomNumArray').innerText = genRandomNumArray(elemSelector('#testGenRandomNumArraySelect').value, 1, 100)" id="testGenRandomNumArrayButton">generate 3 random numbers</button>
+			<p>the button will generate the selected number of items with values ranging from 1 to 100 (bounds inclusive)</p>`
 	}
 ];
 

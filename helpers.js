@@ -253,5 +253,5 @@ var genRandomNumArray = function(numItems, min, max) {
 	for (let a=0; a < numItems; a+=1) {
 		r.push(Math.floor(Math.random()*(max-min+1)+min));
 	}
-    return randomNumArray
+    return r;
 };
