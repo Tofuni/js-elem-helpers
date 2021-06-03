@@ -43,10 +43,10 @@ var displayToggleButton = function (toggleElem, toggleButton) {
 // countdown with start and end events
 var countDown = function (time, eventStart, eventEnd, timeDisplayElem) {
     eventStart();
-    timeDisplayElem.innerHTML = time;
+    timeDisplayElem.innerHTML = time.toString();
     var cd = setInterval(function () {
         time -= 1;
-        timeDisplayElem.innerHTML = time;
+        timeDisplayElem.innerHTML = time.toString();
         if (time <= 0) {
             eventEnd();
             clearInterval(cd);

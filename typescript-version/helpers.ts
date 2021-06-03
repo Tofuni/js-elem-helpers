@@ -1,5 +1,5 @@
 // shorthand selector by class or id
-const elemSelector = function(elemString): string {
+const elemSelector = function(elemString): HTMLCollectionOf<Element> {
 	return {
 		".": document.getElementsByClassName(elemString.slice(1)),
 		"#": document.getElementById(elemString.slice(1)),
@@ -26,13 +26,13 @@ const getUrlAsync = function(url: string, responsetype: any, func: (obj: any) =>
 }
 
 // hide an element (e.g. closing a banner)
-var hideElem = function(elem) {
+var hideElem = function(elem: HTMLElement): void {
 	elem.style.display = 'none';
 }
 
 // vertical show/hide toggle via button
-var displayToggleButton = function(toggleElem, toggleButton) {
-	let state = toggleElem.style.display;
+var displayToggleButton = function(toggleElem: HTMLElement, toggleButton: HTMLElement): void {
+	let state: string = toggleElem.style.display;
 	if (state === "none") {
 		toggleElem.style.display = "inline-block";
 		toggleButton.innerHTML = "&#9650;";
@@ -43,12 +43,12 @@ var displayToggleButton = function(toggleElem, toggleButton) {
 }
 
 // countdown with start and end events
-var countDown = function(time, eventStart, eventEnd, timeDisplayElem) {
+var countDown = function(time: number, eventStart: () => void, eventEnd: () => void, timeDisplayElem: HTMLElement): void {
     eventStart();
-    timeDisplayElem.innerHTML = time;
+    timeDisplayElem.innerHTML = time.toString();
     let cd = setInterval(function() {
         time -= 1;
-		timeDisplayElem.innerHTML = time;
+		timeDisplayElem.innerHTML = time.toString();
         if (time <= 0) {
             eventEnd();
             clearInterval(cd);
@@ -57,12 +57,12 @@ var countDown = function(time, eventStart, eventEnd, timeDisplayElem) {
 }
 
 // get random item from array
-var getRandomItem = function(array) {
+var getRandomItem = function(array: Array<any>): Array<any> {
     return array[Math.floor(Math.random()*(array.length))];
 }
 
 // get values in elements
-var getValuesInElems = function(elems) {
+var getValuesInElems = function(elems: HTMLCollectionOf<HTMLInputElement>): Array<string> {
 	let vals = [];
 	for (let a=0; a<elems.length; a+=1) {
 		vals.push(elems[a].value);
@@ -71,12 +71,12 @@ var getValuesInElems = function(elems) {
 }
 
 // append HTML to element
-var appendHTMLToElem = function(HTMLString, elem) {
+var appendHTMLToElem = function(HTMLString: string, elem: HTMLElement): void {
 	elem.insertAdjacentHTML('beforeend', HTMLString);
 }
 
 // remove last elem in elements
-var removeLastElemInElems = function(elems) {
+var removeLastElemInElems = function(elems: HTMLCollectionOf<HTMLElement>): void {
 	if (elems.length == 0) {
 		return;
 	}
@@ -84,13 +84,13 @@ var removeLastElemInElems = function(elems) {
 }
 
 // get difference between now and a date in days
-var getDateDiff = function(date) {
-	let d = Date.now();
+var getDateDiff = function(date: number): number {
+	const d: number = Date.now();
 	return Math.abs(Math.floor((date - d)/(1000*60*60*24)));
 }
 
 // checkbox toggle event
-var checkboxToggleEvent = function(elem, checkEvent, uncheckedEvent, params) {
+var checkboxToggleEvent = function(elem: HTMLInputElement, checkEvent: (params: any) => void, uncheckedEvent: (params: any) => void, params: Record<string, any>): void {
 	if (elem.checked) { checkEvent(params) }
 	else { uncheckedEvent(params) }
 }
