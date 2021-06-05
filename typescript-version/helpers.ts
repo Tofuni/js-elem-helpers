@@ -1,5 +1,5 @@
 // shorthand selector by class or id
-const elemSelector = function(elemString): HTMLCollectionOf<HTMLElement> {
+const elemSelector = function(elemString): HTMLElement {
 	return {
 		".": document.getElementsByClassName(elemString.slice(1)),
 		"#": document.getElementById(elemString.slice(1)),

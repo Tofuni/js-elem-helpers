@@ -1,4 +1,4 @@
-let demos = [
+const demos: Array<Record<string, string>> = [
 	{
 		"id": "elemSelector",
 		"title": "elemSelector(identifierString)",
@@ -270,7 +270,7 @@ let demos = [
 		"title": "getMinMax(nums, 'min|max')",
 		"description": "get minimum and maximum value(s) in array of nums",
 		"code": `
-			<button onclick="genRandomNumArray(); elemSelector('#testGetMinMax').innerText = randomNumArray; elemSelector('#testGetMinMaxRes').innerText = '[ ' + getMinMax(randomNumArray) + ' ]'">generate an array of random numbers and return the min and max of its items</button>
+			<button onclick="genRandomNumArrayTest(); elemSelector('#testGetMinMax').innerText = randomNumArray; elemSelector('#testGetMinMaxRes').innerText = '[ ' + getMinMax(randomNumArray) + ' ]'">generate an array of random numbers and return the min and max of its items</button>
 			<p id="testGetMinMax"></p>
 			<p id="testGetMinMaxRes"></p>`
 	},
@@ -388,21 +388,12 @@ let demos = [
 */
 
 // -------------------------------------------------------
-// ------- declare functions from helpers.js -------------
-// -------------------------------------------------------
-
-declare function elemSelector(elemString: string): HTMLElement;
-declare function changeElemColor(elem: HTMLElement, textColor: string, bgColor: string): void;
-declare function appendHTMLToElem(HTMLString: string, elem: HTMLElement): void;
-declare function saveToStorage(elem: HTMLElement): void;
-
-// -------------------------------------------------------
 // ------------------ initialize elems -------------------
 // -------------------------------------------------------
 
-let sidebarString = "<ul><li><p>JS Helpers</p></li>";
-let websiteString = "";
-demos.forEach(function(demo) {
+let sidebarString: string = "<ul><li><p>JS Helpers</p></li>";
+let websiteString: string = "";
+demos.forEach(function(demo: Record<string, string>) {
 	sidebarString += `<li class="sidebarElem" onclick="introfocus('`+demo.id+`')">`+demo.title+`</li>`;
     websiteString += `<div class="helper_demo">
 			<span id="`+demo.id+`"></span>
@@ -415,7 +406,7 @@ sidebarString += "</ul>"
 document.getElementById("js_helpers").innerHTML = websiteString;
 document.getElementById("sidebar").innerHTML = sidebarString;
 
-function introfocus(elem) {
+function introfocus(elem: string): void {
     document.getElementById(elem).scrollIntoView();
 }
 
@@ -427,71 +418,70 @@ function introfocus(elem) {
 document.getElementById('toggleDiv').style.display="none";
 
 // setup countDown()
-let cdIniClear = function() {
+const cdIniClear = function(): void {
     elemSelector("#cdButton").style.display = "none";
 }
-let cdPrintMsg = function() {
+const cdPrintMsg = function(): void {
     elemSelector("#cdPrint").innerHTML = "hello worlds";
     elemSelector("#cdButton").style.display = "none";
     elemSelector("#cdTimeRem").style.display = "none";
 }
 
 // setup getRandomItem
-let testArray = [1,2,3,4,12.34,'apple','banana','cherry'];
+const testArray: Array<number | string> = [1,2,3,4,12.34,'apple','banana','cherry'];
 
 // changeElemColor
-let testChangeElemColorChecked = function(p) {
+const testChangeElemColorChecked = function(p: Array<string>): void {
 	changeElemColor(elemSelector('#testChangeElemColor'), p[0], p[1]);
 }
-let testChangeElemColorUnchecked = function(p) {
+const testChangeElemColorUnchecked = function(p: Array<string>): void {
 	changeElemColor(elemSelector('#testChangeElemColor'), p[1], p[0]);
 }
 
 // setup checkboxToggleEvent
-let checkboxToggleEventChecked = function() {
+const checkboxToggleEventChecked = function(): void {
 	elemSelector("#testCheckboxToggleEvent").innerText = "checkbox is checked";
 }
-let checkboxToggleEventUnchecked = function() {
+const checkboxToggleEventUnchecked = function(): void {
 	elemSelector("#testCheckboxToggleEvent").innerText = "checkbox is not checked";
 }
 
 // setup confirmEvent
-let jsTestConfirmEvent = function(params) {
+const jsTestConfirmEvent = function(params: [string, HTMLElement]): void {
 	appendHTMLToElem(params[0], params[1]);
 }
 
 // setup saveToStorage
-let jsTestSaveToStorage = function(elems) {
-	for (let a=0; a<elems.length; a+=1) {
+const jsTestSaveToStorage = function(elems: HTMLCollectionOf<HTMLInputElement>): void {
+	for (let a: number=0; a<elems.length; a+=1) {
 		saveToStorage(elems[a]);
 	}
 }
 
 // setup setElemsDisplay
-const setElemsDisplayElems: HTMLCollection = document.getElementById("testSetElemsDisplay").children;
+const setElemsDisplayElems: HTMLCollectionOf<Element> = document.getElementById("testSetElemsDisplay").children;
 for (let a: number = 0; a < document.getElementById("testSetElemsDisplay").children.length; a+=1) {
 	const currentElem: any = setElemsDisplayElems[a];
 	currentElem.style.display = "none";
 }
 
 // setup getMinMax
-let randomNumArray = [];
-var genRandomNumArray = function() {
-	randomNumArray = [];
-	for (let a=0; a < 10; a+=1) {
+const genRandomNumArrayTest = function(): void {
+	let randomNumArray: Array<number> = [];
+	for (let a: number=0; a < 10; a+=1) {
 		randomNumArray.push(Math.floor(Math.random()*(100-1)));
 	}
 };
 
 // setup testGetUrlAsyncErrorHandler
-var testGetUrlAsyncErrorHandler = function() {
+const testGetUrlAsyncErrorHandler = function(): void {
 	window.alert('error on callback; please ensure this function is run in [ https://fbacarisas.xyz/programming/code_demos/js_helpers/ ] to pass CORS policy;');
 }
 
 // setup testValidateElemStrMatch
-var enc = {2:"qs",61:"on",38:"na",23:"sp",54:"ca",18:"zi",76:"tq",97:"rb",72:"va",21:"zx"};
+const enc: Record<number, string> = {2:"qs",61:"on",38:"na",23:"sp",54:"ca",18:"zi",76:"tq",97:"rb",72:"va",21:"zx"};
 
 // setup doFunctionOnKey
-var testDoFunction = function(params) {
+const testDoFunction = function(params: string): void {
 	document.getElementById("testDoFunctionOnKeyDiv").style.backgroundColor = params;
 }
