@@ -114,24 +114,24 @@ const getCheckedElems = function(elems: HTMLCollectionOf<HTMLInputElement>): Arr
 }
 
 // output alert window to verify action (e.g. alertVerify(event, message))
-var confirmEvent = function(event: (params: any) => void, message: string, params: Record<string, any>) {
+const confirmEvent = function(event: (params: any) => void, message: string, params: Record<string, any>) {
     if (window.confirm(message)) { event(params) };
 }
 
 // reset values back to default values on an HTMLCollection
-var resetToDefault = function(elems: HTMLCollectionOf<HTMLInputElement>, defaults: Array<any>) {
+const resetToDefault = function(elems: HTMLCollectionOf<HTMLInputElement>, defaults: Array<any>) {
     for (let a: number = 0; a<elems.length; a+=1) {
         elems[a].value = defaults[a];
     }
 }
 
 // save an element name and value to localStorage
-var saveToStorage = function(elem: HTMLInputElement): void {
+const saveToStorage = function(elem: HTMLInputElement): void {
     window.localStorage.setItem(elem.name, elem.value);
 }
 
 // populate a select element with options
-var addOptions = function(selectElem: HTMLInputElement, options: Record<string, string>): void {
+const addOptions = function(selectElem: HTMLInputElement, options: Record<string, string>): void {
     let HTMLstring: string = "";
     for (const option in options) {
         HTMLstring += "<option name='"+option+"' value='"+options[option]+"'>"+options[option]+"</option>";
@@ -140,24 +140,24 @@ var addOptions = function(selectElem: HTMLInputElement, options: Record<string, 
 }
 
 // update text-size based on element value
-var updateFontSize = function(size: string, targetElem: HTMLElement): void {
+const updateFontSize = function(size: string, targetElem: HTMLElement): void {
     targetElem.style.fontSize = size;
 }
 
 // return scroll difference of current element
-var getScrollDiff = function(elem: HTMLElement): number {
+const getScrollDiff = function(elem: HTMLElement): number {
     return elem.scrollHeight - elem.scrollTop;
 }
 
 // toggle display for multiple elems
-var setElemsDisplay = function(elems: HTMLCollectionOf<HTMLElement>, display: string): void {
+const setElemsDisplay = function(elems: HTMLCollectionOf<HTMLElement>, display: string): void {
     for (let a: number = 0; a<elems.length; a+=1) {
         elems[a].style.display = display;
     };
 }
 
 // not null elem value validator
-var validateElemNotNull = function(elem) {
+const validateElemNotNull = function(elem: HTMLInputElement): boolean {
     if (elem.value.trim() != "") {
         return true;
     }
@@ -165,14 +165,14 @@ var validateElemNotNull = function(elem) {
 }
 
 // number within range validator
-var validateNumWithinRange = function(num, min, max) {
+const validateNumWithinRange = function(num: number, min: number, max: number): boolean {
     return (num >= min && num <= max);
 }
 
 // get minimum and maximum value(s) in array of nums
-var getMinMax = function(nums, m) {
-    let minmax = [nums[0], nums[0]];
-    nums.forEach(function(num) {
+const getMinMax = function(nums: Array<number>, m: string): number | Array<number> {
+    let minmax: Array<number> = [nums[0], nums[0]];
+    nums.forEach(function(num: number) {
         if (num < minmax[0]) {
             minmax[0] = num;
         } else if (num > minmax[1]) {
@@ -189,19 +189,19 @@ var getMinMax = function(nums, m) {
 }
 
 // get elements' field_names and values as dictionary payload
-var getElemsNameVals = function(elems) {
-    var r = {};
-    for (let a = 0; a < elems.length; a+=1) {
+const getElemsNameVals = function(elems: HTMLCollectionOf<HTMLInputElement>): Record<string, string> {
+    let r: Record<string, string> = {};
+    for (let a: number = 0; a < elems.length; a+=1) {
         r[elems[a].name] = elems[a].value;
     }
     return r;
 }
 
 // parse string and given delimiter to an array object
-var parseStrToArray = function(text, delim) {
-    var list = text.trim().split(delim);
-    var r = [];
-    for (let a = 0; a < list.length; a+=1) {
+const parseStrToArray = function(text: string, delim: string): Array<string> {
+    const list = text.trim().split(delim);
+    let r: Array<string> = [];
+    for (let a: number = 0; a < list.length; a+=1) {
         r.push(list[a].trim());
     }
     return r;
