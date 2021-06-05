@@ -266,8 +266,9 @@ for (var a = 0; a < document.getElementById("testSetElemsDisplay").children.leng
     currentElem.style.display = "none";
 }
 // setup getMinMax
+var randomNumArray = [];
 var genRandomNumArrayTest = function () {
-    var randomNumArray = [];
+    randomNumArray = [];
     for (var a = 0; a < 10; a += 1) {
         randomNumArray.push(Math.floor(Math.random() * (100 - 1)));
     }

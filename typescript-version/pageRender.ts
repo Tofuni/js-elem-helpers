@@ -471,8 +471,9 @@ for (let a: number = 0; a < document.getElementById("testSetElemsDisplay").child
 }
 
 // setup getMinMax
+let randomNumArray: Array<number> = [];
 const genRandomNumArrayTest = function(): void {
-	let randomNumArray: Array<number> = [];
+	randomNumArray = [];
 	for (let a: number=0; a < 10; a+=1) {
 		randomNumArray.push(Math.floor(Math.random()*(100-1)));
 	}
