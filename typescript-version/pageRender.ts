@@ -387,6 +387,11 @@ const demos: Array<Record<string, string>> = [
 "code": ``
 */
 
+declare function elemSelector(elemString: string): HTMLElement;
+declare function changeElemColor(elem: HTMLElement, textColor: string, bgColor: string): void;
+declare function appendHTMLToElem(HTMLString: string, elem: HTMLElement): void;
+declare function saveToStorage(elem: HTMLElement): void;
+
 // -------------------------------------------------------
 // ------------------ initialize elems -------------------
 // -------------------------------------------------------

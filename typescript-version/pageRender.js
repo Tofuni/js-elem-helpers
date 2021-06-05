@@ -147,7 +147,7 @@ var demos = [
         "id": "getMinMax",
         "title": "getMinMax(nums, 'min|max')",
         "description": "get minimum and maximum value(s) in array of nums",
-        "code": "\n\t\t\t<button onclick=\"genRandomNumArray(); elemSelector('#testGetMinMax').innerText = randomNumArray; elemSelector('#testGetMinMaxRes').innerText = '[ ' + getMinMax(randomNumArray) + ' ]'\">generate an array of random numbers and return the min and max of its items</button>\n\t\t\t<p id=\"testGetMinMax\"></p>\n\t\t\t<p id=\"testGetMinMaxRes\"></p>"
+        "code": "\n\t\t\t<button onclick=\"genRandomNumArrayTest(); elemSelector('#testGetMinMax').innerText = randomNumArray; elemSelector('#testGetMinMaxRes').innerText = '[ ' + getMinMax(randomNumArray) + ' ]'\">generate an array of random numbers and return the min and max of its items</button>\n\t\t\t<p id=\"testGetMinMax\"></p>\n\t\t\t<p id=\"testGetMinMaxRes\"></p>"
     },
     {
         "id": "getElemsNameVals",
@@ -266,9 +266,8 @@ for (var a = 0; a < document.getElementById("testSetElemsDisplay").children.leng
     currentElem.style.display = "none";
 }
 // setup getMinMax
-var randomNumArray = [];
-var genRandomNumArray = function () {
-    randomNumArray = [];
+var genRandomNumArrayTest = function () {
+    var randomNumArray = [];
     for (var a = 0; a < 10; a += 1) {
         randomNumArray.push(Math.floor(Math.random() * (100 - 1)));
     }
