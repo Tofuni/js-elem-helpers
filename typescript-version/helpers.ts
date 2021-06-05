@@ -1,5 +1,5 @@
 // shorthand selector by class or id
-const elemSelector = function(elemString): HTMLCollectionOf<Element> {
+const elemSelector = function(elemString): HTMLCollectionOf<HTMLElement> {
 	return {
 		".": document.getElementsByClassName(elemString.slice(1)),
 		"#": document.getElementById(elemString.slice(1)),
@@ -13,7 +13,7 @@ const navi = function(path: string): void {
 
 // asynchronously get url and do response function
 const getUrlAsync = function(url: string, responsetype: any, func: (obj: any) => any, errorHandler?: () => any): void {
-	let req = new XMLHttpRequest();
+	let req: XMLHttpRequest = new XMLHttpRequest();
 	req.responseType = responsetype;
 	req.open("GET", url, true);
 	req.onload = function() {
@@ -26,12 +26,12 @@ const getUrlAsync = function(url: string, responsetype: any, func: (obj: any) =>
 }
 
 // hide an element (e.g. closing a banner)
-var hideElem = function(elem: HTMLElement): void {
+const hideElem = function(elem: HTMLElement): void {
 	elem.style.display = 'none';
 }
 
 // vertical show/hide toggle via button
-var displayToggleButton = function(toggleElem: HTMLElement, toggleButton: HTMLElement): void {
+const displayToggleButton = function(toggleElem: HTMLElement, toggleButton: HTMLElement): void {
 	let state: string = toggleElem.style.display;
 	if (state === "none") {
 		toggleElem.style.display = "inline-block";
@@ -43,10 +43,10 @@ var displayToggleButton = function(toggleElem: HTMLElement, toggleButton: HTMLEl
 }
 
 // countdown with start and end events
-var countDown = function(time: number, eventStart: () => void, eventEnd: () => void, timeDisplayElem: HTMLElement): void {
+const countDown = function(time: number, eventStart: () => void, eventEnd: () => void, timeDisplayElem: HTMLElement): void {
     eventStart();
     timeDisplayElem.innerHTML = time.toString();
-    let cd = setInterval(function() {
+    let cd: number = setInterval(function() {
         time -= 1;
 		timeDisplayElem.innerHTML = time.toString();
         if (time <= 0) {
@@ -57,13 +57,13 @@ var countDown = function(time: number, eventStart: () => void, eventEnd: () => v
 }
 
 // get random item from array
-var getRandomItem = function(array: Array<any>): Array<any> {
+const getRandomItem = function(array: Array<any>): Array<any> {
     return array[Math.floor(Math.random()*(array.length))];
 }
 
 // get values in elements
-var getValuesInElems = function(elems: HTMLCollectionOf<HTMLInputElement>): Array<string> {
-	let vals = [];
+const getValuesInElems = function(elems: HTMLCollectionOf<HTMLInputElement>): Array<string> {
+	let vals: Array<string> = [];
 	for (let a=0; a<elems.length; a+=1) {
 		vals.push(elems[a].value);
 	}
@@ -71,12 +71,12 @@ var getValuesInElems = function(elems: HTMLCollectionOf<HTMLInputElement>): Arra
 }
 
 // append HTML to element
-var appendHTMLToElem = function(HTMLString: string, elem: HTMLElement): void {
+const appendHTMLToElem = function(HTMLString: string, elem: HTMLElement): void {
 	elem.insertAdjacentHTML('beforeend', HTMLString);
 }
 
 // remove last elem in elements
-var removeLastElemInElems = function(elems: HTMLCollectionOf<HTMLElement>): void {
+const removeLastElemInElems = function(elems: HTMLCollectionOf<HTMLElement>): void {
 	if (elems.length == 0) {
 		return;
 	}
@@ -84,54 +84,54 @@ var removeLastElemInElems = function(elems: HTMLCollectionOf<HTMLElement>): void
 }
 
 // get difference between now and a date in days
-var getDateDiff = function(date: number): number {
+const getDateDiff = function(date: number): number {
 	const d: number = Date.now();
 	return Math.abs(Math.floor((date - d)/(1000*60*60*24)));
 }
 
 // checkbox toggle event
-var checkboxToggleEvent = function(elem: HTMLInputElement, checkEvent: (params: any) => void, uncheckedEvent: (params: any) => void, params: Record<string, any>): void {
+const checkboxToggleEvent = function(elem: HTMLInputElement, checkEvent: (params: any) => void, uncheckedEvent: (params: any) => void, params: Record<string, any>): void {
 	if (elem.checked) { checkEvent(params) }
 	else { uncheckedEvent(params) }
 }
 
 // change bg and text-color of element
-var changeElemColor = function(elem, textColor, bgColor) {
+const changeElemColor = function(elem: HTMLElement, textColor: string, bgColor: string): void {
 	elem.style.color = textColor;
 	elem.style.backgroundColor = bgColor;
 }
 
 // check or uncheck all selected elements
-var checkUncheckElems = function(elems, bool) {
+const checkUncheckElems = function(elems: HTMLCollectionOf<HTMLInputElement>, bool: boolean): void {
 	for (let a=0; a<elems.length; a+=1) { elems[a].checked = bool; }
 }
 
 // return all checked elements
-var getCheckedElems = function(elems) {
-	let r = [];
+const getCheckedElems = function(elems: HTMLCollectionOf<HTMLInputElement>): Array<HTMLElement> {
+	let r: Array<any> = [];
 	for (let a=0; a<elems.length; a+=1) { if (elems[a].checked) { r.push(elems[a]); }}
 	return r;
 }
 
 // output alert window to verify action (e.g. alertVerify(event, message))
-var confirmEvent = function(event, message, params) {
+var confirmEvent = function(event: (params: any) => void, message: string, params: Record<string, any>) {
     if (window.confirm(message)) { event(params) };
 }
 
 // reset values back to default values on an HTMLCollection
-var resetToDefault = function(elems, defaults) {
-    for (let a=0; a<elems.length; a+=1) {
+var resetToDefault = function(elems: HTMLCollectionOf<HTMLInputElement>, defaults: Array<any>) {
+    for (let a: number = 0; a<elems.length; a+=1) {
         elems[a].value = defaults[a];
     }
 }
 
 // save an element name and value to localStorage
-var saveToStorage = function(elem) {
+var saveToStorage = function(elem: HTMLInputElement): void {
     window.localStorage.setItem(elem.name, elem.value);
 }
 
 // populate a select element with options
-var addOptions = function(selectElem, options): void {
+var addOptions = function(selectElem: HTMLInputElement, options: Record<string, string>): void {
     let HTMLstring: string = "";
     for (const option in options) {
         HTMLstring += "<option name='"+option+"' value='"+options[option]+"'>"+options[option]+"</option>";
@@ -140,18 +140,18 @@ var addOptions = function(selectElem, options): void {
 }
 
 // update text-size based on element value
-var updateFontSize = function(size, targetElem) {
-	targetElem.style.fontSize = size;
+var updateFontSize = function(size: string, targetElem: HTMLElement): void {
+    targetElem.style.fontSize = size;
 }
 
 // return scroll difference of current element
-var getScrollDiff = function(elem) {
+var getScrollDiff = function(elem: HTMLElement): number {
     return elem.scrollHeight - elem.scrollTop;
 }
 
 // toggle display for multiple elems
-var setElemsDisplay = function(elems, display) {
-    for (let a = 0; a<elems.length; a+=1) {
+var setElemsDisplay = function(elems: HTMLCollectionOf<HTMLElement>, display: string): void {
+    for (let a: number = 0; a<elems.length; a+=1) {
         elems[a].style.display = display;
     };
 }
