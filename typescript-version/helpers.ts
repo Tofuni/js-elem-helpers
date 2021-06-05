@@ -199,7 +199,7 @@ const getElemsNameVals = function(elems: HTMLCollectionOf<HTMLInputElement>): Re
 
 // parse string and given delimiter to an array object
 const parseStrToArray = function(text: string, delim: string): Array<string> {
-    const list = text.trim().split(delim);
+    const list: Array<string> = text.trim().split(delim);
     let r: Array<string> = [];
     for (let a: number = 0; a < list.length; a+=1) {
         r.push(list[a].trim());
@@ -208,49 +208,49 @@ const parseStrToArray = function(text: string, delim: string): Array<string> {
 }
 
 // validate field value with string
-var validateElemStrMatch = function(elem, str) {
+const validateElemStrMatch = function(elem: HTMLInputElement, str: string): boolean {
     return (elem.value === str);
 }
 
 // add/remove classes for an element
-var addRemoveClassesToElem = function(elem, classes, addRem) {
+const addRemoveClassesToElem = function(elem: HTMLElement, classes: Array<string>, addRem: string): void {
     if (addRem.toLowerCase() === "add") {
-		classes.forEach(function(c) { elem.classList.add(c); });
+		classes.forEach(function(c: string) { elem.classList.add(c); });
 	} else if (addRem.toLowerCase() === "remove") {
-		classes.forEach(function(c) { elem.classList.remove(c); });
+		classes.forEach(function(c: string) { elem.classList.remove(c); });
 	} else { return }
 }
 
 // validate character length limit of elem value
-var validateStrLength = function(elem, max) {
+const validateStrLength = function(elem: HTMLInputElement, max: number): boolean {
     return (elem.value.length <= max);
 }
 
 // get position of cursor as [x-coord, y-coord]
-var getCursorPosition = function(e) {
+const getCursorPosition = function(e: MouseEvent): Array<number> {
     return [e.clientX, e.clientY];
 }
 
 // return key properties on elem keypress event
-var getKeyProps = function(e) {
+const getKeyProps = function(e: KeyboardEvent): Record<string, string | number> {
 	return {
 		"code": e.code,
 		"key": e.key,
-		"charCode": e.charCode,
+		"charCode": e.charCode
    }
 }
 
 // do function on key
-var doFunctionOnKey = function(e, inputKey, func, params={}) {
+const doFunctionOnKey = function(e: KeyboardEvent, inputKey: string, func: (params) => void, params: Record<string, any> = {}): any {
 	if (e.key === inputKey) {
         return func(params);
     }
 }
 
 // generate a random array of numbers from a set range
-var genRandomNumArray = function(numItems, min, max) {
-	var r = [];
-	for (let a=0; a < numItems; a+=1) {
+const genRandomNumArray = function(numItems: number, min: number, max: number): Array<number> {
+	let r: Array<number> = [];
+	for (let a: number=0; a < numItems; a+=1) {
 		r.push(Math.floor(Math.random()*(max-min+1)+min));
 	}
     return r;
